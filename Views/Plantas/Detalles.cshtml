@@ -1,0 +1,117 @@
+﻿@model SitioWeb.Models.PlantasTotalModel
+
+@{
+    ViewData["Title"] = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>Detalles del hospedero</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Nombre científico</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreCientifico)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Género</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GeneroHosp)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Nombre común</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreComun)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Subfamilia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subfamilia)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Tipo de hojas</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TipoHojas)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Morfología de hojas</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MorfoHojas)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Posición de hojas</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosHojas)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Posición de foliolos</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosFoliolos)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Color de flor</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorFlor)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Tipo de flor</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TipoFlor)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Número de pétalos</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Petalos)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Presencia de espinas</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Espinas)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Amenazado</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amenazado)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Color de la raíz</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorRaiz)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="form-label">Nodulación</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nodula)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm">Editar</a>
+    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-light btn-sm">Volver a la lista</a>
+</div>
+
+<p>En la parte de detalles se desglosa la información completa de cada planta (todos los campos de la tabla PlantasTotal y PlantasNodulas) </p>
+<p>así como las imágenes de la planta, los nódulos y las bacterias. </p>

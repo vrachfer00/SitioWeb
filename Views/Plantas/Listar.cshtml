@@ -1,0 +1,50 @@
+﻿@model List<PlantasTotalModel>
+
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <h5 class="card-header text-center"> Lista de hospederos </h5>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Plantas" class="btn btn-dark btn-sm">Nuevo</a>
+        <br /> <br />
+
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre científico</th>
+                    <th scope="col">Género</th>
+                    <th scope="col">Nombre común</th>
+                    <th scope="col">Nodulación</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.ID</td>
+                        <td>@item.NombreCientifico</td>
+                        <td>@item.GeneroHosp</td>
+                        <td>@item.NombreComun</td>
+                        <td>@item.Nodula</td>
+                        <td>
+                            <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.ID">Editar</a>
+                            <a asp-action="Detalles" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.ID">Detalles</a>
+                            <a asp-action="Eliminar" asp-controller="Plantas" class="btn btn-danger btn-sm" asp-route-ID="@item.ID">Eliminar</a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
