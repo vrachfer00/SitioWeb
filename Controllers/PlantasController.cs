@@ -17,25 +17,31 @@ namespace SitioWeb.Controllers
             return View();
         }
 
-        public IActionResult Listar() //Vista de todas las plantas y su respectiva información
-        {
-            var oLista = _PlantasDatos.Listar();
-            return View(oLista);
-        }
-
-        public IActionResult Detalles(int ID) //Vista de los datos de una planta específica
+        public IActionResult InfoPlanta(int ID) //Vista de información sobre una planta
         {
             var oDetalle = _PlantasDatos.ObtenerPlanta(ID);
             return View(oDetalle);
         }
 
-        public IActionResult ListarFamilias(string ID) //Vista de los datos de una subfamilia específica
+        public IActionResult ListarFamilias(string ID) //Vista de las especies de plantas existentes por subfamilia
         {
-            var oDetalle = _PlantasDatos.ObtenerSubfamilia(ID);
+            var ListarFamilia = _PlantasDatos.ObtenerSubfamilia(ID);
+            return View(ListarFamilia);
+        }
+
+        public IActionResult Listar() //Vista de todas las plantas y su respectiva información, esta vista está disponible solo para el usuario con permisos
+        {
+            var oLista = _PlantasDatos.Listar();
+            return View(oLista);
+        }
+
+        public IActionResult Detalles(int ID) //Vista de todos los datos de una planta específica, , esta vista está disponible solo para el usuario con permisos
+        {
+            var oDetalle = _PlantasDatos.ObtenerPlanta(ID);
             return View(oDetalle);
         }
 
-        public IActionResult Guardar() //Este método devuelve solo la vista
+        public IActionResult Guardar() //Este método devuelve solo la vista de guardar, esta vista está disponible solo para el usuario con permisos
         {
             return View();
         }
@@ -55,7 +61,7 @@ namespace SitioWeb.Controllers
                 return View();
         }
 
-        public IActionResult Editar(int ID) //Este método muestra la vista editar
+        public IActionResult Editar(int ID) //Este método muestra la vista editar, esta vista está disponible solo para el usuario con permisos
         {
             var ocontacto = _PlantasDatos.ObtenerPlanta(ID);
             return View(ocontacto);
@@ -83,7 +89,7 @@ namespace SitioWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Eliminar(PlantasTotalModel oContacto) //Este método permite eliminar la info de una planta
+        public IActionResult Eliminar(PlantasTotalModel oContacto) //Este método permite eliminar la info de una planta, esta vista está disponible solo para el usuario con permisos
         {
 
             var respuesta = _PlantasDatos.Eliminar(oContacto.ID);
