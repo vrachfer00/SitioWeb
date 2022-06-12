@@ -14,6 +14,7 @@ namespace SitioWeb.Controllers
 
         public IActionResult Principal() //Vista de la página principal 
         {
+            ViewBag.Subfamilias = _PlantasDatos.ListarSubfamilias();
             return View();
         }
 

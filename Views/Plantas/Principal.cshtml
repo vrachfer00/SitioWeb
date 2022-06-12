@@ -48,51 +48,19 @@
     <div class="card-body" style="background-color: #31A34D;">
         <br />
         <div class="row row-cols-1 row-cols-md-2 g-4">
-
+        @foreach (var subfamilia in @ViewBag.Subfamilias)
+        {
             <div class="col">
                 <div class="card">
-                    <a asp-action="ListarFamilias" asp-controller="Plantas" class="card-img-top" asp-route-ID="Caesalpinioideae">
-                        <img src="https://live.staticflickr.com/2039/5769117093_fef3298314_b.jpg" class="card-img-top" alt="Caesalpinioideae">
+                    <a asp-action="ListarFamilias" asp-controller="Plantas" class="card-img-top" asp-route-ID="@subfamilia">
+                        <img src="https://live.staticflickr.com/2039/5769117093_fef3298314_b.jpg" class="card-img-top" alt="@subfamilia">
                     </a>
                     <div class="card-body" style="height: 50px;">
-                        <h5 class="card-title">Caesalpinioideae</h5>
+                        <h5 class="card-title">@subfamilia</h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col">
-                <div class="card">
-                    <a class="card-img-top" asp-area="" asp-controller="Plantas" asp-action="ListarFamilias" asp-route-ID="Papilionoideae">
-                        <img src="https://desmodieae.myspecies.info/sites/desmodieae.myspecies.info/files/P1120851.JPG" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body" style="height: 50px;">
-                        <h5 class="card-title">Papilionoideae</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card">
-                    <a class="card-img-top" asp-area="" asp-controller="Plantas" asp-action="ListarFamilias" asp-route-ID="Detarioideae">
-                        <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/11801637/large.jpeg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body" style="height: 50px;">
-                        <h5 class="card-title">Detarioideae</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card">
-                    <a class="card-img-top" asp-area="" asp-controller="Plantas" asp-action="ListarFamilias" asp-route-ID="Cercidoideae">
-                        <img src="https://live.staticflickr.com/8001/7517211178_82b16d6cb2_b.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body" style="height: 50px;">
-                        <h5 class="card-title">Cercidoideae</h5>
-                    </div>
-                </div>
-            </div>
-
+        }
         </div>
     </div>
 </div>

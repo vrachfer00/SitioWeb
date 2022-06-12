@@ -259,6 +259,31 @@ namespace SitioWeb.Datos
             return oContacto;
         }
 
+        //Procedimiento que permite obtener la lista de plantas de una subfamilia específica según el Nombre
+        public List<string> ListarSubfamilias()
+        {
+            var subfamilias = new List<string>();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ListarSubfamilias", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())//ciclo para leer cada registro de la tabla
+                    {
+                        subfamilias.Add(dr["Subfamilia"].ToString());
+                    }
+                }
+            }
+
+            return subfamilias;
+        }
+
 
     }
 }
