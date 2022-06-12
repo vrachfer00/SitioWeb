@@ -1,0 +1,76 @@
+﻿@model SitioWeb.Models.PlantasTotalModel
+
+@{
+    ViewData["Title"] = "InfoPlanta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1 class="text-center" style="font-style:italic;"> @Html.DisplayFor(model => model.NombreCientifico) </h1>
+<br />
+<br />
+
+<div class="card">
+    <img src="https://live.staticflickr.com/2039/5769117093_fef3298314_b.jpg" class="card-img-top" width="350" height="640" style="border:12px solid black" alt="">
+</div>
+<br />
+<br />
+
+<div style="text-align:center;">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Tipo de hoja</th>
+                <th scope="col">Morfología de hoja</th>
+                <th scope="col">Color de flor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.TipoHojas)</td>
+                <td>@Html.DisplayFor(model => model.MorfoHojas)</td>
+                <td>@Html.DisplayFor(model => model.ColorFlor)</td>
+            </tr>
+    </table><br /><br />
+
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Tipo de flor</th>
+                <th scope="col">Color de raíz</th>
+                <th scope="col">Nodulación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.TipoFlor)</td>
+                <td>@Html.DisplayFor(model => model.ColorRaiz)</td>
+                <td>@Html.DisplayFor(model => model.Nodula)</td>
+            </tr>
+    </table><br /><br />
+
+</div>
+<br />
+<br />
+
+<h1 class="text-center"> Taxonomía de bacteria asociada</h1> <br /><br />
+
+<div style="text-align:center;">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Filo</th>
+                <th scope="col">Género</th>
+                <th scope="col">Gram</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table><br /><br />
+</div>
+
+

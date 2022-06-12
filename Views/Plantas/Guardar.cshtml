@@ -97,11 +97,30 @@
                 <span asp-validation-for="ColorRaiz" class="text-danger"></span>
             </div>
 
+            <!--
+    <div class="mb-3">
+        <label class="form-label">Imagen de planta</label>
+        <input asp-for="ImagenPlanta" type="text" class="form-control">
+    </div>  -->
+
             <div class="mb-3">
                 <label class="form-label">Nodula</label>
                 <input asp-for="Nodula" type="text" class="form-control">
                 <span asp-validation-for="Nodula" class="text-danger"></span>
             </div>
+
+            <!--
+    <div class="mb-3">
+        <label class="form-label">Nodula</label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-for="Nodula">
+            <option selected>Seleccione</option>
+            <option value="1">Si</option>
+            <option value="2">No</option>
+        </select>
+    </div> -->
+
+            <br /> <br />
+
 
             <button type="submit" class="btn btn-dark">Guardar</button>
             <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark">Volver a la lista</a>
