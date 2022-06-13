@@ -105,6 +105,10 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nodula)
+            @if (Model.Nodula == "Si")
+            {
+            <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm">Detalles de Nodulación</a>
+            }
         </dd>
     </dl>
 </div>
