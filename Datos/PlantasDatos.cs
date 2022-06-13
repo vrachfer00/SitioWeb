@@ -219,44 +219,36 @@ namespace SitioWeb.Datos
 
 
         //Procedimiento que permite obtener la lista de plantas de una subfamilia específica según el Nombre
-        public PlantasTotalModel ObtenerSubfamilia(string Subfamilia)
+        public PlantasPorSubfamilia ListarPlantasPorSubfamilia(string Subfamilia)
         {
-            var oContacto = new PlantasTotalModel();
+            PlantasPorSubfamilia resultado = new PlantasPorSubfamilia();
+            resultado.Subfamilia = Subfamilia;
+            resultado.Plantas = new List<InfoPlantaSubfamilia>();
 
             var cn = new Conexion();
 
             using (var conexion = new SqlConnection(cn.getCadenaSQL()))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("ObtenerFamilia", conexion);
-                cmd.Parameters.AddWithValue("Subfamilia", Subfamilia); //Enviar parámetro
+                SqlCommand cmd = new SqlCommand("ListarPlantasPorSubfamilia", conexion);
+                cmd.Parameters.AddWithValue("subfamilia", Subfamilia); //Enviar parámetro
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())//ciclo para leer cada registro de la tabla
                     {
-                        oContacto.ID = Convert.ToInt32(dr["ID"]);
-                        oContacto.NombreCientifico = (dr["NombreCientifico"]).ToString();
-                        oContacto.GeneroHosp = (dr["GeneroHosp"]).ToString();
-                        oContacto.NombreComun = (dr["NombreComun"]).ToString();
-                        oContacto.Subfamilia = (dr["Subfamilia"]).ToString();
-                        oContacto.TipoHojas = (dr["TipoHojas"]).ToString();
-                        oContacto.MorfoHojas = (dr["MorfoHojas"]).ToString();
-                        oContacto.PosHojas = (dr["PosHojas"]).ToString();
-                        oContacto.PosFoliolos = (dr["PosFoliolos"]).ToString();
-                        oContacto.ColorFlor = (dr["ColorFlor"]).ToString();
-                        oContacto.TipoFlor = (dr["TipoFlor"]).ToString();
-                        oContacto.Petalos = Convert.ToInt32(dr["Petalos"]);
-                        oContacto.Espinas = (dr["Espinas"]).ToString();
-                        oContacto.Amenazado = (dr["Amenazado"]).ToString();
-                        oContacto.ColorRaiz = (dr["ColorRaiz"]).ToString();
-                        oContacto.Nodula = (dr["Nodula"]).ToString();
+                        resultado.Plantas.Add(new InfoPlantaSubfamilia()
+                        {
+                            ID = Convert.ToInt32(dr["ID"]),
+                            NombreCientifico = dr["NombreCientifico"].ToString(),
+                            NombreComun = dr["NombreComun"].ToString()
+                        });
                     }
                 }
             }
 
-            return oContacto;
+            return resultado;
         }
 
         //Procedimiento que permite obtener la lista de plantas de una subfamilia específica según el Nombre

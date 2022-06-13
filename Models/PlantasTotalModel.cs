@@ -57,4 +57,17 @@ namespace SitioWeb.Models
 
 
     }
+
+    public class InfoPlantaSubfamilia
+    {
+        public int ID { get; set; }
+        public string NombreCientifico { get; set; }
+        public string NombreComun { get; set; }
+    }
+
+    public class PlantasPorSubfamilia
+    {
+        public string Subfamilia { get; set; }
+        public List<InfoPlantaSubfamilia> Plantas { get; set; }
+    }
 }

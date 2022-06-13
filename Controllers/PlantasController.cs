@@ -24,10 +24,11 @@ namespace SitioWeb.Controllers
             return View(oDetalle);
         }
 
-        public IActionResult ListarFamilias(string ID) //Vista de las especies de plantas existentes por subfamilia
+        [HttpGet]
+        public IActionResult ListarFamilias(string id) //Vista de las especies de plantas existentes por subfamilia
         {
-            var ListarFamilia = _PlantasDatos.ObtenerSubfamilia(ID);
-            return View(ListarFamilia);
+            var ListaPlantas = _PlantasDatos.ListarPlantasPorSubfamilia(id);
+            return View(ListaPlantas);
         }
 
         public IActionResult Listar() //Vista de todas las plantas y su respectiva información, esta vista está disponible solo para el usuario con permisos

@@ -1,4 +1,4 @@
-﻿@model SitioWeb.Models.PlantasTotalModel
+﻿@model SitioWeb.Models.PlantasPorSubfamilia
 
 @{
     ViewData["Title"] = "ListarFamilias";
@@ -19,16 +19,19 @@
 
 <!--Aquí va un ciclo para que se muestren cada una de las plantas de cada subfamilia-->
 <div class="row row-cols-1 row-cols-sm-4 g-4">
-    <div class="col">
-        <div class="card">
-            <a asp-action="InfoPlanta" asp-controller="Plantas" class="card-img-top" asp-route-ID="1">
-                <img src="https://www.cannabismagazine.net/wp-content/uploads/2020/10/plantita-cannabis.jpg" class="card-img-top" alt="...">
-            </a>
-                <div class="card-body">
-                    <h5 class="card-title text-center" style="font-style:italic;"> @Html.DisplayFor(model => model.NombreCientifico) </h5>
-                    <p class="card-text text-center"> @Html.DisplayFor(model => model.NombreComun) </p>
-                </div>
+    @foreach (var planta in Model.Plantas)
+     {
+        <div class="col">
+            <div class="card">
+                <a asp-action="InfoPlanta" asp-controller="Plantas" class="card-img-top" asp-route-ID="@planta.ID">
+                    <img src="https://www.cannabismagazine.net/wp-content/uploads/2020/10/plantita-cannabis.jpg" class="card-img-top" alt="...">
+                </a>
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="font-style:italic;"> @planta.NombreCientifico </h5>
+                        <p class="card-text text-center"> @planta.NombreComun </p>
+                    </div>
+            </div>
         </div>
-    </div>
+     }
 </div>
 
