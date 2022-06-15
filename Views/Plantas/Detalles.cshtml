@@ -7,8 +7,7 @@
 
 
 <div>
-    <h4>Detalles del hospedero</h4>
-    <hr />
+    <h4>Detalles del hospedero</h4><hr />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ID)
@@ -105,17 +104,20 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nodula)
-            @if (Model.Nodula == "Si")
-            {
-            <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm">Detalles de Nodulación</a>
-            }
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm">Editar</a>
-    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-light btn-sm">Volver a la lista</a>
+
+@if (Model.Nodula == "Si")
+{
+    <br />
+    <h4>Detalles de nodulación</h4><hr />
+    <p>Aquí iría una lista como la anterior pero con todos los campos de la tabla PlantasNodulan </p>
+    <p>así como las imágenes de la planta, los nódulos y las bacterias. </p>
+}
+
+<br /><div class="boton text-center">
+    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
 </div>
 
-<p>En la parte de detalles se desglosa la información completa de cada planta (todos los campos de la tabla PlantasTotal y PlantasNodulas) </p>
-<p>así como las imágenes de la planta, los nódulos y las bacterias. </p>
+

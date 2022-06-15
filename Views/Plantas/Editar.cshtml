@@ -6,7 +6,7 @@
 }
 
 <div class="card">
-    <h5 class="card-header">Editar hospedero</h5>
+    <h5 class="card-header">Editar información de hospedero</h5>
     <div class="card-body">
 
         <form asp-action="Editar" asp-controller="Plantas" method="post">
@@ -102,14 +102,28 @@
                 <input asp-for="Nodula" type="text" class="form-control">
                 <span asp-validation-for="Nodula" class="text-danger"></span>
             </div>
-
-            <button type="submit" class="btn btn-dark">Actualizar</button>
-            <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark">Volver a la lista</a>
         </form>
-
-        <p>Si en la opción de "Nodula" se selecciona SÍ deberían desplegarse más campos para llenar </p>
-        <p>según los campos que tiene la tabla PlantasNodulan, y también poder actualizar la imagen de los nódulos, la planta y las bacterias </p>
-        <p>para que se guarden en la respectiva tabla </p>
-
     </div>
 </div>
+
+
+<!--Condicional para determinar si la planta nodula o no y mostrar los campos de la tabla PlantasNodulan para llenar-->
+@if (Model.Nodula == "Si")
+{
+    <br />
+    <div class="card2">
+        <h5 class="card-header">Editar información de nodulación</h5>
+        <div class="card-body">
+            <p>Si en la opción de "Nodula" se selecciona SÍ deberían desplegarse más campos para llenar </p>
+            <p>según los campos que tiene la tabla PlantasNodulan, y también poder actualizar la imagen de los nódulos, la planta y las bacterias </p>
+            <p>para que se guarden en la respectiva tabla </p>
+        </div>
+    </div>
+}
+<div class="botones text-center">
+    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+    <button type="submit" class="btn btn-outline-dark btn-sm">Actualizar</button>
+</div>
+
+
+
