@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<br />
 <br />
 <h1 class="text-center" style="font-style:italic;"> @Html.DisplayFor(model => model.NombreCientifico) </h1>
 <br />
@@ -20,32 +22,32 @@
     <table class="table table-borderless">
         <thead>
             <tr>
-                <th scope="col">Tipo de hoja</th>
-                <th scope="col">Morfología de hoja</th>
-                <th scope="col">Color de flor</th>
+                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Tipo de hoja</th>
+                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Morfología de hoja</th>
+                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Color de flor</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>@Html.DisplayFor(model => model.TipoHojas)</td>
-                <td>@Html.DisplayFor(model => model.MorfoHojas)</td>
-                <td>@Html.DisplayFor(model => model.ColorFlor)</td>
+                <td style="font-size:15px;">@Html.DisplayFor(model => model.TipoHojas)</td>
+                <td style="font-size:15px;">@Html.DisplayFor(model => model.MorfoHojas)</td>
+                <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorFlor)</td>
             </tr>
     </table><br /><br />
 
     <table class="table table-borderless">
         <thead>
             <tr>
-                <th scope="col"> <i class="bi bi-flower1"></i> Tipo de flor</th>
-                <th scope="col">Color de raíz</th>
-                <th scope="col">Nodulación</th>
+                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Tipo de flor</th>
+                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Color de raíz</th>
+                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Nodulación</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>@Html.DisplayFor(model => model.TipoFlor)</td>
-                <td>@Html.DisplayFor(model => model.ColorRaiz)</td>
-                <td>@Html.DisplayFor(model => model.Nodula)</td>
+                <td style="font-size:15px;">@Html.DisplayFor(model => model.TipoFlor)</td>
+                <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorRaiz)</td>
+                <td style="font-size:15px;">@Html.DisplayFor(model => model.Nodula)</td>
             </tr>
     </table><br />
 
@@ -58,7 +60,7 @@
         <hr style="height:1px" color="#31A34D">
         <br />
 
-        <h1 class="text-center"> Taxonomía de bacteria asociada</h1>
+        <h1 class="text-center"> Taxonomía de bacteria asociada </h1>
         <br />
         <br />
 
@@ -66,9 +68,9 @@
             <table class="table table-borderless">
                 <thead>
                     <tr>
-                        <th scope="col">Filo</th>
-                        <th scope="col">Género</th>
-                        <th scope="col">Gram</th>
+                        <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Filo</th>
+                        <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Género</th>
+                        <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Gram</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +83,7 @@
         </div>
     }
 </div>
+
 
 
 

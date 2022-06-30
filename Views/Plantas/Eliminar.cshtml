@@ -16,11 +16,8 @@
                 ¿Desea eliminar el registro de la planta @Html.DisplayTextFor(m => m.NombreCientifico)?
             </div>
 
-            <div class="botones text-center">
-                <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
-                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-            </div>
-       
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark">Volver a la lista</a>
         </form>
 
         <p>Si se elimina una planta también deben borrarse todos su registros en la tabla PlantasNodulan</p>
@@ -29,4 +26,5 @@
 
     </div>
 </div>
+
 

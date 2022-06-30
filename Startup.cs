@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace SitioWeb
 {
     public class Startup
@@ -25,6 +27,14 @@ namespace SitioWeb
         {
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.LoginPath = "/Plantas/Login"; //Establecer página de inicio de sesión
+                    option.ExpireTimeSpan = TimeSpan.FromMinutes(15); //Tiempo de expiración de la página
+                    option.AccessDeniedPath = "/Plantas/Principal"; //Página a mostrar cuando no tenga acceso al login
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +54,8 @@ namespace SitioWeb
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

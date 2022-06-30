@@ -98,10 +98,10 @@
             </div>
 
             <!--
-        <div class="mb-3">
-            <label class="form-label">Imagen de planta</label>
-            <input asp-for="ImagenPlanta" type="text" class="form-control">
-        </div>  -->
+    <div class="mb-3">
+        <label class="form-label">Imagen de planta</label>
+        <input asp-for="ImagenPlanta" type="text" class="form-control">
+    </div>  -->
 
             <div class="mb-3">
                 <label class="form-label">Nodula</label>
@@ -110,22 +110,30 @@
             </div>
 
             <!--
-        <div class="mb-3">
-            <label class="form-label">Nodula</label>
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-for="Nodula">
-                <option selected>Seleccione</option>
-                <option value="1">Si</option>
-                <option value="2">No</option>
-            </select>
-        </div> -->
+    <div class="mb-3">
+        <label class="form-label">Nodula</label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-for="Nodula">
+            <option selected>Seleccione</option>
+            <option value="1">Si</option>
+            <option value="2">No</option>
+        </select>
+    </div> -->
+
+            <div class="botones text-center">
+
+                <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+                <button type="submit" class="btn btn-outline-dark btn-sm">Guardar</button>
+
+            </div>
+
         </form>
 
         <br />
-        <div class="botones text-center">
-            <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
-            <button type="submit" class="btn btn-outline-dark btn-sm">Guardar</button>
-        </div>
+       
+
         <br />
+
+
         <p>Si en la opción de "Nodula" se selecciona SÍ deberían desplegarse más campos para llenar </p>
         <p>según los campos que tiene la tabla PlantasNodulan, y también poder actualizar la imagen de los nódulos, la planta y las bacterias </p>
         <p>para que se guarden en la respectiva tabla </p>
