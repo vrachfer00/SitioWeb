@@ -37,6 +37,7 @@ namespace SitioWeb.Controllers
             return View(oLista);
         }
 
+
         public IActionResult Detalles(int ID) //Vista de todos los datos de una planta específica, , esta vista está disponible solo para el usuario con permisos
         {
             var oDetalle = _PlantasDatos.ObtenerPlanta(ID);
