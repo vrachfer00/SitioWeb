@@ -38,7 +38,7 @@ namespace SitioWeb.Datos
                     
                 }
                 byte[] img = Convert.FromBase64String(objs.Imagen);
-                string query = "INSERT INTO PlantasTotal(";
+                string query = "SET IDENTITY_INSERT PlantasTotal ON; INSERT INTO PlantasTotal(";
                 string fields = "NombreCientifico," +
                     "GeneroHosp," +
                     "NombreComun," +
