@@ -98,18 +98,14 @@ namespace SitioWeb.Controllers
 
 
         [HttpPost]
-        public IActionResult Guardar(PlantasTotalModel oContacto)  //Método recibe los datos para guardarlos en la BD
+        public IActionResult GuardarConImagen(PlantasTotalModel objs)  //Método recibe los datos para guardarlos en la BD
         {
             //Validación de campos vacíos
             if (!ModelState.IsValid)
                 return View();
 
-            var respuesta = _PlantasDatos.Guardar(oContacto);
-
-            if (respuesta)
-                return RedirectToAction("Listar");
-            else
-                return View();
+            var respuesta = _PlantasDatos.GuardarConImagen(objs);
+            return Ok();
         }
 
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización

@@ -55,6 +55,10 @@ namespace SitioWeb.Models
         [Required(ErrorMessage = "El campo Nodula es obligatorio")]
         public string Nodula { get; set; }
 
+        public string tipoImagen { get; set; }
+
+        public string Imagen { get; set; }
+
 
     }
 

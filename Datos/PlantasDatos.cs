@@ -10,6 +10,93 @@ namespace SitioWeb.Datos
 {
     public class PlantasDatos
     {
+        //Guardar info de planta con imagen :)
+        public bool GuardarConImagen(PlantasTotalModel objs)
+        {
+            try
+            {
+                var cn = new Conexion();
+                int ID = 0;
+                try
+                {
+                    string querySelect = "SELECT MAX(ID) as maxId FROM PlantasTotal";
+                    using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                    {
+                        conexion.Open();
+                        SqlCommand cmd = new SqlCommand(querySelect, conexion);
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())//ciclo para leer cada registro de la tabla
+                            {
+                                ID = Convert.ToInt32(dr["maxId"])+1;
+                            }
+                        }
+                    }
+
+                }
+                catch { 
+                    
+                }
+                byte[] img = Convert.FromBase64String(objs.Imagen);
+                string query = "INSERT INTO PlantasTotal(";
+                string fields = "NombreCientifico," +
+                    "GeneroHosp," +
+                    "NombreComun," +
+                    "Subfamilia," +
+                    "TipoHojas," +
+                    "MorfoHojas," +
+                    "PosHojas," +
+                    "PosFoliolos," +
+                    "ColorFlor," +
+                    "TipoFlor," +
+                    "Petalos," +
+                    "Espinas," +
+                    "Amenazado," +
+                    "ColorRaiz," +
+                    "Nodula," +
+                    "tipoImagen," +
+                    "Imagen) ";
+                string values = "values (";
+                if (ID > 0){
+                    fields = "ID," + fields;
+                    values = values + ID + ",";
+                }
+                values = values + "N'" + objs.NombreCientifico + "'," +
+                    "N'" + objs.GeneroHosp + "'," +
+                    "N'" + objs.NombreComun + "'," +
+                    "N'" + objs.Subfamilia + "'," +
+                    "N'" + objs.TipoHojas + "'," +
+                    "N'" + objs.MorfoHojas + "'," +
+                    "N'" + objs.PosHojas + "'," +
+                    "N'" + objs.PosFoliolos + "'," +
+                    "N'" + objs.ColorFlor + "'," +
+                    "N'" + objs.TipoFlor + "'," +
+                    objs.Petalos + "," +
+                    "N'" + objs.Espinas + "'," +
+                    "N'" + objs.Amenazado + "'," +
+                    "N'" + objs.ColorRaiz + "'," +
+                    "N'" + objs.Nodula + "'," +
+                    "N'" + objs.tipoImagen + "'," +
+                    "@Imagen)";
+                query = query + fields + values;
+                
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, conexion); //Llamar con el query creado arriba
+                    cmd.Parameters.AddWithValue("@Imagen", img);
+                    cmd.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+                return false;
+            }
+
+        }
 
         //Procedimiento para guardar info de una nueva planta
         public bool Guardar(PlantasTotalModel ocontacto)
