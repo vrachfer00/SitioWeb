@@ -5,7 +5,7 @@
 }
 
 <div class="card">
-    <h5 class="card-header">Editar hospedero</h5>
+    <h5 class="card-header">Eliminar hospedero</h5>
     <div class="card-body">
 
         <form asp-action="Eliminar" asp-controller="Plantas" method="post">
@@ -13,16 +13,15 @@
             <input asp-for="ID" type="hidden" class="form-control">
 
             <div class="alert alert-danger" role="alert">
-                ¿Desea eliminar el registro de la planta @Html.DisplayTextFor(m => m.NombreCientifico)?
+                ¿Desea eliminar el registro de la planta @Html.DisplayTextFor(m => m.NombreCientifico)? <!--Ponerle cursiva al nombre científico-->
             </div>
 
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-            <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark">Volver a la lista</a>
+            <div class="botones text-center">
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+            </div>
+
         </form>
-
-        <p>Si se elimina una planta también deben borrarse todos su registros en la tabla PlantasNodulan</p>
-        <p>así como las imágenes que estén relacionadas con esa planta </p>
-
 
     </div>
 </div>

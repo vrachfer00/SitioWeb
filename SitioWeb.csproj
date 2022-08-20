@@ -6,10 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="NewFolder\**" />
-    <Content Remove="NewFolder\**" />
-    <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="NewFolder\**" />
+    <Content Remove="wwwroot\Images\LEGMi-Negro.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\LEGMi-Negro.png" />
   </ItemGroup>
 
   <ItemGroup>

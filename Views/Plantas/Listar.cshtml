@@ -16,11 +16,10 @@
         <table class="table table-striped table-bordered table-sm">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre científico</th>
-                    <th scope="col">Subfamilia</th>
-                    <th scope="col">Nombre común</th>
-                    <th scope="col">Nodulación</th>
+                    <th scope="col" class="text-center">ID</th>
+                    <th scope="col" class="text-center">Nombre científico</th>
+                    <th scope="col" class="text-center">Subfamilia</th>
+                    <th scope="col" class="text-center">Nodulación</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,12 +28,11 @@
                 {
                     <tr>
 
-                        <td>@item.ID</td>
-                        <td> <i>@item.NombreCientifico</i> </td>
-                        <td>@item.Subfamilia</td>
-                        <td>@item.NombreComun</td>
-                        <td>@item.Nodula</td>
-                        <td>
+                        <td class="text-center">@item.ID</td>
+                        <td class="text-center"> <i>@item.NombreCientifico</i> </td>
+                        <td class="text-center">@item.Subfamilia</td>
+                        <td class="text-center">@item.Nodula</td>
+                        <td class="text-center">
                             <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.ID">Editar</a>
                             <a asp-action="Detalles" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.ID">Detalles</a>
                             <a asp-action="Eliminar" asp-controller="Plantas" class="btn btn-danger btn-sm" asp-route-ID="@item.ID"> <i class="bi bi-trash"></i> Eliminar</a>
@@ -45,7 +43,6 @@
 
             </tbody>
         </table>
-
 
     </div>
 </div>

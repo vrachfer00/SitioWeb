@@ -1,4 +1,4 @@
-﻿@model PlantasTotalModel
+﻿@model SitioWeb.Models.PlantasTotalModel
 
 @{
     ViewData["Title"] = "Guardar";
@@ -9,212 +9,266 @@
 
 <div class="card">
     <h5 class="card-header">Agregar hospedero</h5>
+
     <div class="card-body col-md-9 col-sm-12">
 
-        <form asp-action="Listar" asp-controller="Plantas" method="post">
+        <div class="mb-3">
+            <label class="form-label">Nombre Científico</label>
+            <input asp-for="NombreCientifico" type="text" class="form-control" id="txtNomCientifico">
+            <span asp-validation-for="NombreCientifico" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nombre Científico</label>
-                <input asp-for="NombreCientifico" type="text" class="form-control" id="txtNomCientifico">
-                <span asp-validation-for="NombreCientifico" class="text-danger"></span>
+        <div class="mb-3">
+            <label class="form-label">Género</label>
+            <input asp-for="GeneroHosp" type="text" class="form-control" id="txtGenero">
+            <span asp-validation-for="GeneroHosp" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre común</label>
+            <input asp-for="NombreComun" type="text" class="form-control" id="txtNomComun">
+            <span asp-validation-for="NombreComun" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Subfamilia</label>
+            <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="selectSubfamilia" required>
+                <option disabled selected hidden>Seleccione</option>
+                <option value="Papilionoideae">Papilionoideae</option>
+                <option value="Caesalpinioideae">Caesalpinioideae</option>
+                <option value="Detarioideae">Detarioideae</option>
+                <option value="Cercidoideae">Cercidoideae</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo de Hojas</label>
+            <input asp-for="TipoHojas" type="text" class="form-control" id="txtTipoHojas">
+            <span asp-validation-for="TipoHojas" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Morfología de hojas</label>
+            <input asp-for="MorfoHojas" type="text" class="form-control" id="txtMorfoHojas">
+            <span asp-validation-for="MorfoHojas" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Posición de las hojas</label>
+            <input asp-for="PosHojas" type="text" class="form-control" id="txtPosHojas">
+            <span asp-validation-for="PosHojas" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Posición de los foliolos</label>
+            <input asp-for="PosFoliolos" type="text" class="form-control" id="txtPosFoli">
+            <span asp-validation-for="PosFoliolos" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Color de flor</label>
+            <input asp-for="ColorFlor" type="text" class="form-control" id="txtColor">
+            <span asp-validation-for="ColorFlor" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo de flor</label>
+            <input asp-for="TipoFlor" type="text" class="form-control" id="txtFlor">
+            <span asp-validation-for="TipoFlor" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Cantidad de pétalos</label>
+            <input asp-for="Petalos" type="text" class="form-control" id="txtPetalos">
+            <span asp-validation-for="Petalos" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Presencia de espinas</label>
+            <input asp-for="Espinas" type="text" class="form-control" id="txtEspinas">
+            <span asp-validation-for="Espinas" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Amenazado</label>
+            <input asp-for="Amenazado" type="text" class="form-control" id="txtAmenazado">
+            <span asp-validation-for="Amenazado" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Color de la raíz</label>
+            <input asp-for="ColorRaiz" type="text" class="form-control" id="txtRaiz">
+            <span asp-validation-for="ColorRaiz" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Simbionte</label> <!--datos y sql-->
+            <input asp-for="Simbionte" type="text" class="form-control" id="txtSimbionte">
+            <span asp-validation-for="Simbionte" class="text-danger"></span>
+        </div>
+
+        <!--Imagen Planta-->
+        <div class="col-sm-6">
+            <label class="form-label">Seleccione una foto de la planta: </label>
+            <img class="form-control-file" id="img" style="height:240px; border:groove" /> <br />
+            <input type="file" id="fupload" accept="image/*">
+        </div><br />
+        <!--Imagen Planta-->
+
+        <div class="mb-3">
+            <label class="form-label">Nodula</label>
+            <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="selectNodula" required>
+                <option disabled selected hidden>Seleccione</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="botones text-center">
+        <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+        <button type="submit" class="btn btn-outline-dark btn-sm" id="save">Guardar</button>
+    </div> <br />
+
+    <div style="position: absolute; margin-left:840px; margin-top:1745px" id="BotonNodula">
+        <!--Botoncito para duplicar el div-->
+        <button class="btn btn-dark btn-sm form-control" data-toggle="modal" data-target="#myModal" id="BotonNodula"> <i class="bi bi-plus-circle"></i> Nuevo nódulo</button>
+    </div>
+
+    <!--Formulario Nodula con PopUp-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+
+                        <h2 class="modal-title text-center"> Agregar Nódulo</h2>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="card-body col-md-9 col-sm-12" id="FormNodula">
+
+                            <div class="mb-3">
+                                <label class="form-label">ID de Nódulo</label>
+                                <input asp-for="NombreCientifico" type="text" class="form-control">
+                                <span asp-validation-for="NombreCientifico" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Número de Individuo</label>
+                                <input asp-for="GeneroHosp" type="text" class="form-control">
+                                <span asp-validation-for="GeneroHosp" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Cantidad de Nodos</label>
+                                <input asp-for="NombreComun" type="text" class="form-control">
+                                <span asp-validation-for="NombreComun" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Forma del nodo</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Tipo de nodo</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Tamaño de nodo</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Fecha</label>
+                                <input asp-for="Subfamilia" type="date" class="form-control" id="datepicker">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Proyecto</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Permiso</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Filo de Bacteria</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Género de Bacteria</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Rizobio</label>
+                                <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="Nodula" required>
+                                    <option disabled selected hidden>Seleccione</option>
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Prueba Gram</label>
+                                <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="Gram" required>
+                                    <option disabled selected hidden>Seleccione</option>
+                                    <option value="Positiva">Positiva</option>
+                                    <option value="Negativa">Negativa</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Secuencia</label>
+                                <input asp-for="Subfamilia" type="text" class="form-control">
+                                <span asp-validation-for="Subfamilia" class="text-danger"></span>
+                            </div>
+
+                            <!--Imagen Nodulo-->
+                            <div class="col-sm-6">
+                                <label class="form-label">Seleccione una foto del nódulo: </label>
+                                <img class="form-control-file" id="img2" style="height:240px; border:groove" /> <br />
+                                <input type="file" id="fupload2" accept="image/*">
+                            </div><br />
+                            <!--Imagen Nodulo-->
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-dark btn-sm"> Guardar </button>
+                    </div>
+
+
+                </form>
             </div>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Género</label>
-                <input asp-for="GeneroHosp" type="text" class="form-control" id="txtGenero">
-                <span asp-validation-for="GeneroHosp" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Nombre común</label>
-                <input asp-for="NombreComun" type="text" class="form-control" id="txtNomComun">
-                <span asp-validation-for="NombreComun" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Subfamilia</label>
-                <input asp-for="Subfamilia" type="text" class="form-control" id="txtSubfamilia">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Tipo de Hojas</label>
-                <input asp-for="TipoHojas" type="text" class="form-control" id="txtTipoHojas">
-                <span asp-validation-for="TipoHojas" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Morfología de hojas</label>
-                <input asp-for="MorfoHojas" type="text" class="form-control" id="txtMorfoHojas">
-                <span asp-validation-for="MorfoHojas" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Posición de las hojas</label>
-                <input asp-for="PosHojas" type="text" class="form-control" id="txtPosHojas">
-                <span asp-validation-for="PosHojas" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Posición de los foliolos</label>
-                <input asp-for="PosFoliolos" type="text" class="form-control" id="txtPosFoli">
-                <span asp-validation-for="PosFoliolos" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Color de flor</label>
-                <input asp-for="ColorFlor" type="text" class="form-control" id="txtColor">
-                <span asp-validation-for="ColorFlor" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Tipo de flor</label>
-                <input asp-for="TipoFlor" type="text" class="form-control" id="txtFlor">
-                <span asp-validation-for="TipoFlor" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Cantidad de pétalos</label>
-                <input asp-for="Petalos" type="text" class="form-control" id="txtPetalos">
-                <span asp-validation-for="Petalos" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Presencia de espinas</label>
-                <input asp-for="Espinas" type="text" class="form-control" id="txtEspinas">
-                <span asp-validation-for="Espinas" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Amenazado</label>
-                <input asp-for="Amenazado" type="text" class="form-control" id="txtAmenazado">
-                <span asp-validation-for="Amenazado" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Color de la raíz</label>
-                <input asp-for="ColorRaiz" type="text" class="form-control" id="txtRaiz">
-                <span asp-validation-for="ColorRaiz" class="text-danger"></span>
-            </div>
+    </div>
 
 
-            <!--Imagen-->
-            <div class="col-sm-6">
-                <label class="form-label">Seleccione una foto de la planta: </label>
-                <img class="form-control-file" id="img" style="height:240px; border:groove" /> <br />
-                <input type="file" id="fupload" accept="image/*">
-            </div><br />
-            <!--Imagen-->
+    <!--Código de los scripts-->
+    <script type="text/javascript">
 
-            <div class="mb-3">
-                <label class="form-label">Nodula</label>
-                <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="selectNodula" required>
-                    <option disabled selected hidden>Seleccione</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                </select>
-            </div> <br />
-
-             <div id="FormNodula">
-
-            <div class="mb-3">
-                <label class="form-label">ID de Nódulo</label>
-                <input asp-for="NombreCientifico" type="text" class="form-control">
-                <span asp-validation-for="NombreCientifico" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Número de Individuo</label>
-                <input asp-for="GeneroHosp" type="text" class="form-control">
-                <span asp-validation-for="GeneroHosp" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Cantidad de Nodos</label>
-                <input asp-for="NombreComun" type="text" class="form-control">
-                <span asp-validation-for="NombreComun" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Forma del nodo</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Tipo de nodo</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Tamaño de nodo</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Fecha</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Proyecto</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Permiso</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Filo de Bacteria</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Género de Bacteria</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Rizobio</label>
-                <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="Nodula">
-                    <option selected>Seleccione</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Prueba Gram</label>
-                <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="Gram">
-                    <option selected>Seleccione</option>
-                    <option value="Positiva">Positiva</option>
-                    <option value="Negativa">Negativa</option>
-                </select>
-            </div>
-
-    </div> 
-            <!--Aquí termina el formulario de Nodula-->
-
-            <div class="botones text-center">
-                <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
-                <button type="submit" class="btn btn-outline-dark btn-sm" id="save">Guardar</button>
-            </div>
-
-            <!--Script de la vista previa-->
-            <script type="text/javascript">
-
+                //Script para mostrar el Botón Nuevo Nodulo
                 const el = document.getElementById('selectNodula');
 
-                const box = document.getElementById('FormNodula');
+                const box = document.getElementById('BotonNodula');
                 box.style.display = 'none';
 
                 el.addEventListener('change', function handleChange(event) {
@@ -225,7 +279,7 @@
                     }
                 });
 
-
+                //Script de la vista previa de la fotoplanta
                 var images
                 function ReadImages(input) {
                     if (input.files && input.files[0]) {
@@ -242,15 +296,16 @@
 
                 $('#fupload').change(function () {
                     ReadImages(this);
-
                 })
 
+
+                //Script del botón guardar
                 $('#save').click(function () {
                     var obj = {}
                     obj.NombreCientifico = $('#txtNomCientifico').val();
                     obj.GeneroHosp = $('#txtGenero').val();
                     obj.NombreComun = $('#txtNomComun').val();
-                    obj.Subfamilia = $('#txtSubfamilia').val();
+                    obj.Subfamilia = $('#selectSubfamilia').val();
                     obj.TipoHojas = $('#txtTipoHojas').val();
                     obj.MorfoHojas = $('#txtMorfoHojas').val();
                     obj.PosHojas = $('#txtPosHojas').val();
@@ -261,6 +316,7 @@
                     obj.Espinas = $('#txtEspinas').val();
                     obj.Amenazado = $('#txtAmenazado').val();
                     obj.ColorRaiz = $('#txtRaiz').val();
+                    obj.Simbionte = $('#txtSimbionte').val();
                     obj.Nodula = $('#selectNodula').val();
 
 
@@ -274,21 +330,20 @@
                         dataType: 'JSON',
                         data: { objs: obj },
                         success: function (data) {
+                            alert(data);
+                        },
 
+                        error: function (request, status, error) {
+
+                            var val = request.responseText;
+                            window.location.href = 'https://localhost:5001/Plantas/Listar'
                         }
 
                     })
                 })
-            </script>
-
-        </form>
-
-
-
-    <br />
-    <br />
-
+    </script>
 
 </div>
-</div>
+
+<br />
 

@@ -52,14 +52,76 @@ namespace SitioWeb.Models
         [Required(ErrorMessage = "El campo Color de raíz es obligatorio")]
         public string ColorRaiz { get; set; }
 
+        [Required(ErrorMessage = "El campo Simbionte es obligatorio")]
+        public string Simbionte { get; set; }
+
         [Required(ErrorMessage = "El campo Nodula es obligatorio")]
         public string Nodula { get; set; }
 
-        public string tipoImagen { get; set; }
+        public string tipoImagen { get; set; } = null!;
 
-        public string Imagen { get; set; }
+        public string Imagen { get; set; } = null!;
 
+    }
 
+    public class PlantasNodulan
+    {
+        //Aquí declaro las variables para PlantasNodulan
+        [Required(ErrorMessage = "El campo Id de Nódulo es obligatorio")]
+        public string IdNodulo { get; set; }
+
+        [Required(ErrorMessage = "El campo Individuo es obligatorio")]
+        public int Indiv { get; set; }
+
+        public string NombreCientificoPlanta { get; set; }
+
+        [Required(ErrorMessage = "El campo Cantidad de nodos es obligatorio")]
+        public int CantidadNodos { get; set; }
+
+        [Required(ErrorMessage = "El campo Forma de nodo es obligatorio")]
+        public string FormaNodo { get; set; }
+
+        [Required(ErrorMessage = "El campo Tipo de nodo es obligatorio")]
+        public string TipoNodo { get; set; }
+
+        [Required(ErrorMessage = "El campo Tamaño de nodo es obligatorio")]
+        public int TamanoNodo { get; set; }
+
+        [Required(ErrorMessage = "El campo Fecha es obligatorio")]
+        public string Fecha { get; set; } //No se si string puede ser fecha
+
+        [Required(ErrorMessage = "El campo Proyecto es obligatorio")]
+        public string Proyecto { get; set; }
+
+        [Required(ErrorMessage = "El campo Permiso es obligatorio")]
+        public string Permiso { get; set; }
+
+        [Required(ErrorMessage = "El campo Permiso es obligatorio")]
+        public string FiloBacteria { get; set; }
+
+        [Required(ErrorMessage = "El campo Género de bacteria es obligatorio")]
+        public string GeneroBacteria { get; set; }
+
+        [Required(ErrorMessage = "El campo Rhizobio es obligatorio")]
+        public string Rhizobio { get; set; }
+
+        [Required(ErrorMessage = "El campo Gram es obligatorio")]
+        public string Gram { get; set; }
+
+        [Required(ErrorMessage = "El campo Secuencia es obligatorio")]
+        public string Secuencia { get; set; }
+
+        public int IDPlanta { get; set; }
+
+        public string TipoFoto { get; set; } = null!;
+
+        public string FotoNodulo { get; set; } = null!;
+    }
+
+    public class ModeloTotal
+    {
+        public PlantasTotalModel PlantasTotal { get; set; }
+        public PlantasNodulan PlantasNodulan { get; set; }
     }
 
     public class InfoPlantaSubfamilia

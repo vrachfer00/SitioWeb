@@ -53,6 +53,7 @@ namespace SitioWeb.Datos
                     "Espinas," +
                     "Amenazado," +
                     "ColorRaiz," +
+                    "Simbionte," +
                     "Nodula," +
                     "tipoImagen," +
                     "Imagen) ";
@@ -75,6 +76,7 @@ namespace SitioWeb.Datos
                     "N'" + objs.Espinas + "'," +
                     "N'" + objs.Amenazado + "'," +
                     "N'" + objs.ColorRaiz + "'," +
+                     "N'" + objs.Simbionte + "'," +
                     "N'" + objs.Nodula + "'," +
                     "N'" + objs.tipoImagen + "'," +
                     "@Imagen)";
@@ -98,7 +100,79 @@ namespace SitioWeb.Datos
 
         }
 
-        //Procedimiento para guardar info de una nueva planta
+
+        //Guardar info de nodulo con imagen :)
+        public bool GuardarNoduloConImagen(PlantasNodulan objs)
+        {
+            try
+            {
+                var cn = new Conexion();
+
+                    using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                    conexion.Open();                                    
+    
+           
+                byte[] img = Convert.FromBase64String(objs.FotoNodulo);
+                string query = "INSERT INTO PlantasNodulan(";
+                string fields = "IdNodulo," +
+                    "Indiv," +
+                    "NombreCientificoPlanta," +
+                    "CantidadNodos," +
+                    "FormaNodo," +
+                    "TipoNodo," +
+                    "TamanoNodo," +
+                    "Fecha," +
+                    "Proyecto," +
+                    "Permiso," +
+                    "FiloBacteria," +
+                    "GeneroBacteria," +
+                    "Rhizobio," +
+                    "Gram," +
+                    "Secuencia," +
+                    "IDPlanta," +
+                    "tipoFoto," +
+                    "FotoNodulo) ";
+                string values = "values (";
+               
+                values = values + "N'" + objs.IdNodulo + "'," +
+                    objs.Indiv + "," +
+                    "N'" + objs.NombreCientificoPlanta + "'," +
+                    objs.CantidadNodos + "," +
+                    "N'" + objs.FormaNodo + "'," +
+                    "N'" + objs.TipoNodo + "'," +
+                    objs.TamanoNodo + "," +
+                    "N'" + objs.Fecha.ToString() + "'," +
+                    "N'" + objs.Proyecto + "'," +
+                    "N'" + objs.Permiso + "'," +
+                    "N'" + objs.FiloBacteria + "'," +
+                    "N'" + objs.GeneroBacteria+ "'," +
+                    "N'" + objs.Rhizobio + "'," +
+                    "N'" + objs.Gram + "'," +
+                    "N'" + objs.Secuencia + "'," +
+                    objs.IDPlanta+ "," +
+                    "N'" + objs.TipoFoto + "'," +
+                    "@FotoNodulo)";
+                query = query + fields + values;
+
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, conexion); //Llamar con el query creado arriba
+                    cmd.Parameters.AddWithValue("@FotoNodulo", img);
+                    cmd.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+                return false;
+            }
+        }
+
+
+        //Procedimiento para guardar info de una nueva planta, ya no lo estoy usando
         public bool Guardar(PlantasTotalModel ocontacto)
         {
             bool rpta;
@@ -178,8 +252,12 @@ namespace SitioWeb.Datos
                             Espinas = (dr["Espinas"]).ToString(),
                             Amenazado = (dr["Amenazado"]).ToString(),
                             ColorRaiz = (dr["ColorRaiz"]).ToString(),
+                            Simbionte = (dr["Simbionte"]).ToString(),
                             Nodula = (dr["Nodula"]).ToString(),
-                        });
+                           // tipoImagen = (dr["tipoImagen"]).ToString(),
+                           // Imagen = Convert.ToBase64String((byte[])dr["Imagen"]) //no está funcionando
+                         });
+
                     }
                 }
             }
@@ -188,7 +266,60 @@ namespace SitioWeb.Datos
         }
 
 
-        //Procedimiento que permite obtener info de una planta específica según el ID
+        //Procedimiento que permite obtener info de una planta específica según el ID, incluye la foto de la planta
+        public PlantasTotalModel ObtenerPlantaConFoto(int ID)
+        {
+            var oContacto = new PlantasTotalModel();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ObtenerPlanta", conexion);
+                cmd.Parameters.AddWithValue("ID", ID); //Enviar parámetro
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())//ciclo para leer cada registro de la tabla
+                    {
+                        oContacto.ID = Convert.ToInt32(dr["ID"]);
+                        oContacto.NombreCientifico = (dr["NombreCientifico"]).ToString();
+                        oContacto.GeneroHosp = (dr["GeneroHosp"]).ToString();
+                        oContacto.NombreComun = (dr["NombreComun"]).ToString();
+                        oContacto.Subfamilia = (dr["Subfamilia"]).ToString();
+                        oContacto.TipoHojas = (dr["TipoHojas"]).ToString();
+                        oContacto.MorfoHojas = (dr["MorfoHojas"]).ToString();
+                        oContacto.PosHojas = (dr["PosHojas"]).ToString();
+                        oContacto.PosFoliolos = (dr["PosFoliolos"]).ToString();
+                        oContacto.ColorFlor = (dr["ColorFlor"]).ToString();
+                        oContacto.TipoFlor = (dr["TipoFlor"]).ToString();
+                        oContacto.Petalos = Convert.ToInt32(dr["Petalos"]);
+                        oContacto.Espinas = (dr["Espinas"]).ToString();
+                        oContacto.Amenazado = (dr["Amenazado"]).ToString();
+                        oContacto.ColorRaiz = (dr["ColorRaiz"]).ToString();
+                        oContacto.Simbionte = (dr["Simbionte"]).ToString();
+                        oContacto.Nodula = (dr["Nodula"]).ToString();
+                        oContacto.tipoImagen = (dr["tipoImagen"]).ToString();
+
+                        if (!Convert.IsDBNull(dr["Imagen"])) //Si el campo Imagen no está vacío hace la conversión
+                        {
+                            oContacto.Imagen = Convert.ToBase64String((byte[])dr["Imagen"]);               
+                        }
+                        else
+                        {
+                            // do something else
+                        }
+                        
+                    }
+                }
+            }
+
+            return oContacto;
+        }
+
+        //Procedimiento que permite obtener info de una planta específica según el ID, no incluye la foto de la planta
         public PlantasTotalModel ObtenerPlanta(int ID)
         {
             var oContacto = new PlantasTotalModel();
@@ -235,6 +366,7 @@ namespace SitioWeb.Datos
         {
             bool rpta;
 
+
             try
             {
                 var cn = new Conexion();
@@ -273,6 +405,57 @@ namespace SitioWeb.Datos
 
             return rpta;
         }
+
+
+        //Procedimiento para editar info de una planta CON FOTO NO SIRVE
+        public bool EditarConFoto(PlantasTotalModel ocontacto)
+        {
+            bool rpta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("EditarPlantaFoto", conexion);
+                    cmd.Parameters.AddWithValue("ID", ocontacto.ID);
+                    cmd.Parameters.AddWithValue("NombreCientifico", ocontacto.NombreCientifico); //Enviar parámetro
+                    cmd.Parameters.AddWithValue("GeneroHosp", ocontacto.GeneroHosp);
+                    cmd.Parameters.AddWithValue("NombreComun", ocontacto.NombreComun);
+                    cmd.Parameters.AddWithValue("Subfamilia", ocontacto.Subfamilia);
+                    cmd.Parameters.AddWithValue("TipoHojas", ocontacto.TipoHojas);
+                    cmd.Parameters.AddWithValue("MorfoHojas", ocontacto.MorfoHojas);
+                    cmd.Parameters.AddWithValue("PosHojas", ocontacto.PosHojas);
+                    cmd.Parameters.AddWithValue("PosFoliolos", ocontacto.PosFoliolos);
+                    cmd.Parameters.AddWithValue("ColorFlor", ocontacto.ColorFlor);
+                    cmd.Parameters.AddWithValue("TipoFlor", ocontacto.TipoFlor);
+                    cmd.Parameters.AddWithValue("Petalos", ocontacto.Petalos);
+                    cmd.Parameters.AddWithValue("Espinas", ocontacto.Espinas);
+                    cmd.Parameters.AddWithValue("Amenazado", ocontacto.Amenazado);
+                    cmd.Parameters.AddWithValue("ColorRaiz", ocontacto.ColorRaiz);
+                    cmd.Parameters.AddWithValue("ColorRaiz", ocontacto.ColorRaiz);
+                    cmd.Parameters.AddWithValue("Simbionte", ocontacto.ColorRaiz);
+                    cmd.Parameters.AddWithValue("Nodula", ocontacto.Nodula);
+                    cmd.Parameters.AddWithValue("tipoImagen", ocontacto.tipoImagen);
+                    byte[] img = Convert.FromBase64String(ocontacto.Imagen);
+                    cmd.Parameters.AddWithValue("Imagen", img);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+                rpta = false;
+            }
+
+            return rpta;
+        }
+
 
 
         //Procedimiento para eliminar info de una planta

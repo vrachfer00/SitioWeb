@@ -1,0 +1,28 @@
+﻿@model List<PlantasNodulan>
+
+@{
+    ViewData["Title"] = "VerNodulos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalles de Nodulación de @ViewData["NombrePlanta"]</h1>
+
+
+<table class="table table-sm">
+
+    <tbody>
+            <tr>
+
+                <td class="text-center">  <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a></td>
+                <td class="text-center">   <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a><i></i> </td>
+                <td class="text-center">  <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a></td>
+                <td class="text-center">  <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a></td>
+                <td class="text-center">
+         
+                </td>
+
+            </tr>
+ 
+
+    </tbody>
+</table>

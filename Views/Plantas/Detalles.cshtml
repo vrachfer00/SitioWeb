@@ -8,6 +8,21 @@
 
 <div>
     <h4>Detalles del hospedero</h4><hr />
+
+    <div style="position: absolute; margin-left:530px; margin-top:40px">
+        @if (Model != null && !String.IsNullOrEmpty(Model.Imagen))
+        {
+            <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" width="400" height="400" style="border: 2px solid #000000" alt="Foto">
+
+        }
+        else
+        {
+            <div class="col text-center">
+                <img src="https://denac-public.s3.amazonaws.com/assets/img/catalog/thumbnails/accesorios/iluminacion/cuartos/nissan/00418081r.png" width="400" height="400" alt="Sin Foto">
+            </div>
+        }
+
+    </div>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ID)
@@ -100,6 +115,12 @@
             @Html.DisplayFor(model => model.ColorRaiz)
         </dd>
         <dt class="col-sm-2">
+            <label class="form-label">Simbionte</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Simbionte)
+        </dd>
+        <dt class="col-sm-2">
             <label class="form-label">Nodulación</label>
         </dt>
         <dd class="col-sm-10">
@@ -110,14 +131,24 @@
 
 @if (Model.Nodula == "Si")
 {
-    <br />
-    <h4>Detalles de nodulación</h4><hr />
-    <p>Aquí iría una lista como la anterior pero con todos los campos de la tabla PlantasNodulan </p>
-    <p>así como las imágenes de la planta, los nódulos y las bacterias. </p>
+    var item = Model.ID;
+
+    <div style="position: absolute; margin-left:610px; margin-top:-50px" id="BotonNodula">
+        <a asp-action="GuardarNodulo" asp-controller="Plantas" class="btn btn-dark btn-sm" asp-route-ID="@item"> <i class="bi bi-plus-circle"></i> Agregar Nódulo</a>
+    </div>
+
+    <div style="position: absolute; margin-left:750px; margin-top:-50px" id="BotonNodula">
+        <a asp-action="VerNodulos" asp-controller="Plantas" class="btn btn-dark btn-sm" asp-route-ID="@item"><i class="bi bi-eye-fill"></i> Ver Nódulos</a>
+    </div>
 }
 
-<br /><div class="boton text-center">
-    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+<br />
+
+<hr />
+<div class="boton text-center">
+    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark btn-sm">Regresar</a>
 </div>
+
+
 
 

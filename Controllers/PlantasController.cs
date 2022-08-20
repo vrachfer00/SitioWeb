@@ -35,9 +35,9 @@ namespace SitioWeb.Controllers
         public async Task<IActionResult> Login(string usuario, string clave) //Recibe los parámetros para iniciar sesión, las cookies trabajan con métodos asíncronos
         {
 
-            UsuariosModel objeto = new UsuarioDatos().EncontrarUsuario(usuario,clave);
+            UsuariosModel objeto = new UsuarioDatos().EncontrarUsuario(usuario, clave);
 
-            if(objeto.Nombre != null) //Validar que los datos sean correctos
+            if (objeto.Nombre != null) //Validar que los datos sean correctos
             {
                 var claims = new List<Claim> //El usuario tiene varias propiedades tipo Claims
                 {
@@ -54,7 +54,7 @@ namespace SitioWeb.Controllers
 
             ModelState.AddModelError("Clave", "Usuario o contraseña incorrectos");
             return View();
-            
+
         }
 
         public async Task<IActionResult> CerrarSesion() //Devuelve a la página principal
@@ -65,7 +65,7 @@ namespace SitioWeb.Controllers
 
         public IActionResult InfoPlanta(int ID) //Vista de información sobre una planta
         {
-            var oDetalle = _PlantasDatos.ObtenerPlanta(ID);
+            var oDetalle = _PlantasDatos.ObtenerPlantaConFoto(ID);
             return View(oDetalle);
         }
 
@@ -86,9 +86,14 @@ namespace SitioWeb.Controllers
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
         public IActionResult Detalles(int ID) //Vista de todos los datos de una planta específica, , esta vista está disponible solo para el usuario con permisos
         {
-            var oDetalle = _PlantasDatos.ObtenerPlanta(ID);
+            PlantasTotalModel InfoPlanta = _PlantasDatos.ObtenerPlanta(ID);
+            ViewData["IDPlanta"] = InfoPlanta.ID;
+            ViewData["NombrePlanta"] = InfoPlanta.NombreCientifico;
+
+            var oDetalle = _PlantasDatos.ObtenerPlantaConFoto(ID);
             return View(oDetalle);
         }
+
 
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
         public IActionResult Guardar() //Este método devuelve solo la vista de guardar, esta vista está disponible solo para el usuario con permisos
@@ -105,8 +110,47 @@ namespace SitioWeb.Controllers
                 return View();
 
             var respuesta = _PlantasDatos.GuardarConImagen(objs);
-            return Ok();
+
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
         }
+
+        [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
+        public IActionResult GuardarNodulo(int ID) //Este método devuelve solo la vista de guardar nódulo, esta vista está disponible solo para el usuario con permisos
+        {
+            PlantasTotalModel InfoPlanta = _PlantasDatos.ObtenerPlanta(ID);
+            ViewData["IDPlanta"] = InfoPlanta.ID;
+            ViewData["NombrePlanta"] = InfoPlanta.NombreCientifico;
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult GuardarNodulo(PlantasNodulan objs)  //Método recibe los datos para guardarlos en la BD
+        {
+            //Validación de campos vacíos
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _PlantasDatos.GuardarNoduloConImagen(objs);
+
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
+        }
+        public IActionResult VerNodulos(int ID) //Vista de todos los datos de una planta específica, , esta vista está disponible solo para el usuario con permisos
+        {
+           PlantasTotalModel InfoPlanta = _PlantasDatos.ObtenerPlanta(ID);
+           ViewData["IDPlanta"] = InfoPlanta.ID;
+           ViewData["NombrePlanta"] = InfoPlanta.NombreCientifico;
+
+           var oDetalle = _PlantasDatos.ObtenerPlantaConFoto(ID);
+            return View();
+        }
+
 
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
         public IActionResult Editar(int ID) //Este método muestra la vista editar, esta vista está disponible solo para el usuario con permisos
@@ -123,13 +167,15 @@ namespace SitioWeb.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            var respuesta = _PlantasDatos.Editar(oContacto);
+           var respuesta = _PlantasDatos.EditarConFoto(oContacto);
 
-            if (respuesta)
+
+           if (respuesta)
                 return RedirectToAction("Listar");
             else
                 return View();
         }
+
 
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
         public IActionResult Eliminar(int ID) //Este método muestra la vista eliminar

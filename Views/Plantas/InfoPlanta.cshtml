@@ -5,84 +5,145 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background-color: #181818;
+            border-radius: 8px;
+            border-style: none;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            height: 35px;
+            line-height: 20px;
+            list-style: none;
+            margin: 0;
+            outline: none;
+            padding: 10px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            text-decoration-color: none;
+            transition: color 100ms;
+            vertical-align: baseline;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
 
-<br />
-<br />
-<h1 class="text-center" style="font-style:italic;"> @Html.DisplayFor(model => model.NombreCientifico) </h1>
-<br />
-<br />
+            .button:hover,
+            .button:focus {
+                background-color: #181818;
+                text-decoration: none;
+                text-decoration-color: none;
+            }
 
-<div class="card">
-    <img src="https://live.staticflickr.com/2039/5769117093_fef3298314_b.jpg" class="card-img-top" width="350" height="640" style="border: 12px solid #31A34D" alt="">
-</div>
-<br />
-<br />
+    </style>
+</head>
+<body>
 
-<div style="text-align:center;">
-    <table class="table table-borderless">
-        <thead>
-            <tr>
-                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Tipo de hoja</th>
-                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Morfología de hoja</th>
-                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Color de flor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="font-size:15px;">@Html.DisplayFor(model => model.TipoHojas)</td>
-                <td style="font-size:15px;">@Html.DisplayFor(model => model.MorfoHojas)</td>
-                <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorFlor)</td>
-            </tr>
-    </table><br /><br />
+    <br />
+    <br />
+    <h1 class="text-center" style="font-style:italic;"> @Html.DisplayFor(model => model.NombreCientifico) </h1>
+    <br />
+    <br />
 
-    <table class="table table-borderless">
-        <thead>
-            <tr>
-                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Tipo de flor</th>
-                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Color de raíz</th>
-                <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Nodulación</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="font-size:15px;">@Html.DisplayFor(model => model.TipoFlor)</td>
-                <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorRaiz)</td>
-                <td style="font-size:15px;">@Html.DisplayFor(model => model.Nodula)</td>
-            </tr>
-    </table><br />
-
-</div>
-
-<div>
-    <!--Condicional para determinar si la planta nodula o no y mostrar la información de los nódulos-->
-    @if (Model.Nodula == "Si")
+    @if (Model != null && !String.IsNullOrEmpty(Model.Imagen))
     {
-        <hr style="height:1px" color="#31A34D">
-        <br />
+        <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" class="card-img-top" width="320" height="600" style="border: 12px solid #31A34D" alt="Foto de hospedero">
 
-        <h1 class="text-center"> Taxonomía de bacteria asociada </h1>
-        <br />
-        <br />
-
-        <div style="text-align:center;">
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Filo</th>
-                        <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Género</th>
-                        <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Gram</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-            </table><br /><br />
+    }
+    else //no muestra la imagen random
+    {
+        <div class="col text-center">
+            <img src="https://denac-public.s3.amazonaws.com/assets/img/catalog/thumbnails/accesorios/iluminacion/cuartos/nissan/00418081r.png" width="400" height="400" alt="Sin Foto">
         </div>
     }
-</div>
+
+
+    <br />
+    <br />
+
+    <div style="text-align:center;">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Tipo de hoja</th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Morfología de hoja</th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Color de flor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-size:15px;">@Html.DisplayFor(model => model.TipoHojas)</td>
+                    <td style="font-size:15px;">@Html.DisplayFor(model => model.MorfoHojas)</td>
+                    <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorFlor)</td>
+                </tr>
+        </table><br /><br />
+
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Simbionte </th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Color de raíz</th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Nodulación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-size:15px;">@Html.DisplayFor(model => model.Simbionte)</td>
+                    <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorRaiz)</td>
+                    <td style="font-size:15px;">@Html.DisplayFor(model => model.Nodula)</td>
+                </tr>
+        </table><br />
+
+    </div>
+
+    <div>
+        <!--Condicional para determinar si la planta nodula o no y mostrar la información de los nódulos-->
+        @if (Model.Nodula == "Si")
+        {
+            <hr style="height:1px" color="#31A34D">
+            <br />
+
+            <h1 class="text-center"> Taxonomía de bacteria asociada </h1>
+            <br />
+            <br />
+
+            <div style="text-align:center;">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Filo</th>
+                            <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Género</th>
+                            <th scope="col" style="font-size:20px;"><i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Gram</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                </table><br /><br />
+            </div>
+        }
+    </div>
+
+    <div class="botones text-center">
+        <a href="javascript:history.back()" class="button"> Regresar </a> <!--Recordar darle formato a este botón-->
+    </div> 
+
+</body>
+</html>
+
+
 
 
 

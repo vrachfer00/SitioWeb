@@ -3,146 +3,184 @@
 @{
     ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
 <div class="card">
-    <h5 class="card-header">Editar información de hospedero</h5>
-    <div class="card-body">
+    <h5 class="card-header">Editar hospedero</h5>
 
-        <form asp-action="Editar" asp-controller="Plantas" method="post">
+    <div class="card-body col-md-9 col-sm-12">
 
-            <input asp-for="ID" type="hidden" class="form-control">
+        <div class="mb-3">
+            <label class="form-label">Nombre Científico</label>
+            <input asp-for="NombreCientifico" type="text" class="form-control" id="txtNomCientifico">
+            <span asp-validation-for="NombreCientifico" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nombre Científico</label>
-                <input asp-for="NombreCientifico" type="text" class="form-control">
-                <span asp-validation-for="NombreCientifico" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Género</label>
+            <input asp-for="GeneroHosp" type="text" class="form-control" id="txtGenero">
+            <span asp-validation-for="GeneroHosp" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Género</label>
-                <input asp-for="GeneroHosp" type="text" class="form-control">
-                <span asp-validation-for="GeneroHosp" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Nombre común</label>
+            <input asp-for="NombreComun" type="text" class="form-control" id="txtNomComun">
+            <span asp-validation-for="NombreComun" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nombre común</label>
-                <input asp-for="NombreComun" type="text" class="form-control">
-                <span asp-validation-for="NombreComun" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Subfamilia</label>
+            <input asp-for="Subfamilia" type="text" class="form-control" id="txtSubfamilia">
+            <span asp-validation-for="Subfamilia" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Subfamilia</label>
-                <input asp-for="Subfamilia" type="text" class="form-control">
-                <span asp-validation-for="Subfamilia" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Tipo de Hojas</label>
+            <input asp-for="TipoHojas" type="text" class="form-control" id="txtTipoHojas">
+            <span asp-validation-for="TipoHojas" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Tipo de Hojas</label>
-                <input asp-for="TipoHojas" type="text" class="form-control">
-                <span asp-validation-for="TipoHojas" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Morfología de hojas</label>
+            <input asp-for="MorfoHojas" type="text" class="form-control" id="txtMorfoHojas">
+            <span asp-validation-for="MorfoHojas" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Morfología de hojas</label>
-                <input asp-for="MorfoHojas" type="text" class="form-control">
-                <span asp-validation-for="MorfoHojas" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Posición de las hojas</label>
+            <input asp-for="PosHojas" type="text" class="form-control" id="txtPosHojas">
+            <span asp-validation-for="PosHojas" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Posición de las hojas</label>
-                <input asp-for="PosHojas" type="text" class="form-control">
-                <span asp-validation-for="PosHojas" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Posición de los foliolos</label>
+            <input asp-for="PosFoliolos" type="text" class="form-control" id="txtPosFoli">
+            <span asp-validation-for="PosFoliolos" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Posición de los foliolos</label>
-                <input asp-for="PosFoliolos" type="text" class="form-control">
-                <span asp-validation-for="PosFoliolos" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Color de flor</label>
+            <input asp-for="ColorFlor" type="text" class="form-control" id="txtColor">
+            <span asp-validation-for="ColorFlor" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Color de flor</label>
-                <input asp-for="ColorFlor" type="text" class="form-control">
-                <span asp-validation-for="ColorFlor" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Tipo de flor</label>
+            <input asp-for="TipoFlor" type="text" class="form-control" id="txtFlor">
+            <span asp-validation-for="TipoFlor" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Tipo de flor</label>
-                <input asp-for="TipoFlor" type="text" class="form-control">
-                <span asp-validation-for="TipoFlor" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad de pétalos</label>
+            <input asp-for="Petalos" type="text" class="form-control" id="txtPetalos">
+            <span asp-validation-for="Petalos" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Cantidad de pétalos</label>
-                <input asp-for="Petalos" type="text" class="form-control">
-                <span asp-validation-for="Petalos" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Presencia de espinas</label>
+            <input asp-for="Espinas" type="text" class="form-control" id="txtEspinas">
+            <span asp-validation-for="Espinas" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Presencia de espinas</label>
-                <input asp-for="Espinas" type="text" class="form-control">
-                <span asp-validation-for="Espinas" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Amenazado</label>
+            <input asp-for="Amenazado" type="text" class="form-control" id="txtAmenazado">
+            <span asp-validation-for="Amenazado" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Amenazado</label>
-                <input asp-for="Amenazado" type="text" class="form-control">
-                <span asp-validation-for="Amenazado" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Color de la raíz</label>
+            <input asp-for="ColorRaiz" type="text" class="form-control" id="txtRaiz">
+            <span asp-validation-for="ColorRaiz" class="text-danger"></span>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Color de la raíz</label>
-                <input asp-for="ColorRaiz" type="text" class="form-control">
-                <span asp-validation-for="ColorRaiz" class="text-danger"></span>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Simbionte</label>
+            <input asp-for="Simbionte" type="text" class="form-control" id="txtSimbionte">
+            <span asp-validation-for="Simbionte" class="text-danger"></span>
+        </div>
 
-            <br />
+        <!--Imagen-->
+        <div class="col-sm-6">
             <label class="form-label">Seleccione una foto de la planta: </label>
-            <input type="file" id="myfile" name="myfile">
-            <br />    <br />
+            <img class="form-control-file" id="img" style="height:240px; border:groove" /> <br />
+            <input type="file" id="fupload" accept="image/*">
+        </div><br />
+        <!--Imagen-->
 
+        <div class="mb-3">
+            <label class="form-label">Nodula</label>
+            <select class="form-control" aria-label=".form-select-lg example" asp-for="Nodula" id="selectNodula" required>
+                <option disabled selected hidden>Seleccione</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nodula</label>
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-for="Nodula">
-                    <option selected>Seleccione</option>
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
-            </div>
+    </div> 
 
-            <div class="mb-3">
-                <label class="form-label">Nodula</label>
-                <input asp-for="Nodula" type="text" class="form-control">
-                <span asp-validation-for="Nodula" class="text-danger"></span>
-            </div>
+    <div class="botones text-center">
+        <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+        <button type="submit" class="btn btn-outline-dark btn-sm" id="save">Actualizar</button>
+    </div> <br />
 
-            <!--Condicional para determinar si la planta nodula o no y mostrar los campos de la tabla PlantasNodulan para llenar-->
-            @if (Model.Nodula == "Si")
-            {
-                <br />
-                <div class="card2">
-                    <h5 class="card-header">Editar información de nodulación</h5>
-                    <div class="card-body">
-                        <p>Si en la opción de "Nodula" se selecciona SÍ deberían desplegarse más campos para llenar </p>
-                        <p>según los campos que tiene la tabla PlantasNodulan, y también poder actualizar la imagen de los nódulos, la planta y las bacterias </p>
-                        <p>para que se guarden en la respectiva tabla </p>
-                    </div>
-                </div>
-            }
-            <div class="botones text-center">
-                <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
+    <!--Script de la vista previa-->
+    <script type="text/javascript">
 
-                <button type="submit" class="btn btn-outline-dark btn-sm">Actualizar</button>
-            </div>
+                var images
+                function ReadImages(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
 
-        </form>
+                        reader.onload = function (e) {
+                            $('#img').attr('src', e.target.result);
+                            images = e.target.result //4000 characters
+                        }
 
-    </div>
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                $('#fupload').change(function () {
+                    ReadImages(this);
+                })
+
+                $('#save').click(function () {
+                    var obj = {}
+                    obj.NombreCientifico = $('#txtNomCientifico').val();
+                    obj.GeneroHosp = $('#txtGenero').val();
+                    obj.NombreComun = $('#txtNomComun').val();
+                    obj.Subfamilia = $('#txtSubfamilia').val();
+                    obj.TipoHojas = $('#txtTipoHojas').val();
+                    obj.MorfoHojas = $('#txtMorfoHojas').val();
+                    obj.PosHojas = $('#txtPosHojas').val();
+                    obj.PosFoliolos = $('#txtPosFoli').val();
+                    obj.ColorFlor = $('#txtColor').val();
+                    obj.TipoFlor = $('#txtFlor').val();
+                    obj.Petalos = $('#txtPetalos').val();
+                    obj.Espinas = $('#txtEspinas').val();
+                    obj.Amenazado = $('#txtAmenazado').val();
+                    obj.ColorRaiz = $('#txtRaiz').val();
+                    obj.ColorRaiz = $('#txtSimbionte').val();
+                    obj.Nodula = $('#selectNodula').val();
+
+                    var img = images.split(","); //Separa el string por el valor del parámetro
+                    obj.tipoImagen = img[0];
+                    obj.Imagen = img[1]
+
+                    $.ajax({
+                        url: '@Url.Action("Editar", "Plantas")', //Algo no funciona aqui, los dos controladores se llaman igual, puede ser eso
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: { objs: obj },
+                        success: function (data) {
+
+                        }
+
+                    })
+                })
+    </script>
+
 </div>
-
-
-
-
-
