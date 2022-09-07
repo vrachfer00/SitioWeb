@@ -118,10 +118,11 @@ namespace SitioWeb.Models
         public string FotoNodulo { get; set; } = null!;
     }
 
-    public class ModeloTotal
+    //Prueba de modelo combinado QUE NO SIRVE
+    public class ViewModel
     {
-        public PlantasTotalModel PlantasTotal { get; set; }
-        public PlantasNodulan PlantasNodulan { get; set; }
+        public IEnumerable<PlantasTotalModel> PlantasTotal { get; set; }
+        public IEnumerable<PlantasNodulan> PlantasNodulan { get; set; }
     }
 
     public class InfoPlantaSubfamilia

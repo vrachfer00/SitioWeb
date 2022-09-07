@@ -5,24 +5,103 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detalles de Nodulación de @ViewData["NombrePlanta"]</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+              }
 
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+                   }
+    </style>
+</head>
+<body>
 
-<table class="table table-sm">
+    <br /> <h1 class="text-center" style="font-style: italic;"> @ViewData["NombrePlanta"] </h1> <br />
+    <h5 class="text-center"> Lista de individuos asociados </h5> <br />
 
-    <tbody>
-            <tr>
+    <div class="container text-center">
+        <div class="row row-cols-1 row-cols-md-3 g-4" style="background-color: #E1FADB;">
+            @foreach (var item in Model)
+            {
 
-                <td class="text-center">  <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a></td>
-                <td class="text-center">   <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a><i></i> </td>
-                <td class="text-center">  <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a></td>
-                <td class="text-center">  <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="">Editar</a></td>
-                <td class="text-center">
-         
-                </td>
+                <a asp-action="" asp-controller="Plantas" class="button btn btn-light btn-sm" onclick="getId(@item.IdNodulo)" data-toggle="modal" data-target="#myModal" data-id="@item.IdNodulo"> Nodo @item.IdNodulo </a>
 
-            </tr>
- 
+            }
+        </div>
+    </div>
 
-    </tbody>
-</table>
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h2 class="modal-title w-100 text-center"> Individuo <span id="idHolder"></span> </h2> 
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="card-body w-100 text-center">
+                                      
+                                <!--<button id="modalDetailsButton" type="submit" class="btn btn-primary" asp-controller="Plantas" asp-action="DetallesNodulo"> Prueba</button>-->
+
+                                <a asp-action="DetallesNodulo" asp-controller="Plantas" class="button btn btn-light btn-sm" id="eventId" asp-route-ID="ana"> <i class="bi bi-eye-fill"></i> Detalles </a>
+
+                                <a asp-action="" asp-controller="Plantas" class="button btn btn-light btn-sm" id="eventId" asp-route-id=""> <i class="bi bi-pencil-square"></i> Actualizar </a>
+                                <a asp-action="" asp-controller="Plantas" class="button btn btn-light btn-sm" id="eventId" asp-route-ID=""> <i class="bi bi-trash3-fill"></i>Eliminar </a>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Script del modal-->
+
+    
+    <script type="text/javascript">
+     
+        var clickId;
+        $(document).on("click", ".button", function (event) {
+            $(event.currentTarget).find('asp-route-id').val(getId);
+            var btn = $(this).find('#modalDetailsButton');
+            console.log(clickId)
+            btn.attr('formaction', '/Plantas/DetallesNodulo/' + clickId);
+        });
+        function getId(clicked_id) {
+            this.clickId = clicked_id;
+        }
+
+        //Sí funciona, permite obtener el valor de IdNodulo y mostrarlo en el título de cada PopUp
+        $(document).on("click", ".button", function () {
+            var eventId = $(this).data('id');
+            $('#idHolder').html(eventId);
+        });
+
+    </script>
+
+</body>
+</html>
+

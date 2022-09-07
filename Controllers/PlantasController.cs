@@ -143,12 +143,12 @@ namespace SitioWeb.Controllers
         }
         public IActionResult VerNodulos(int ID) //Vista de todos los datos de una planta específica, , esta vista está disponible solo para el usuario con permisos
         {
-           PlantasTotalModel InfoPlanta = _PlantasDatos.ObtenerPlanta(ID);
-           ViewData["IDPlanta"] = InfoPlanta.ID;
-           ViewData["NombrePlanta"] = InfoPlanta.NombreCientifico;
+            PlantasTotalModel InfoPlanta = _PlantasDatos.ObtenerPlanta(ID);
+            ViewData["IDPlanta"] = InfoPlanta.ID;
+            ViewData["NombrePlanta"] = InfoPlanta.NombreCientifico;
 
-           var oDetalle = _PlantasDatos.ObtenerPlantaConFoto(ID);
-            return View();
+            var oDetalle = _PlantasDatos.ListarNodosPorID(ID);
+            return View(oDetalle);
         }
 
 
@@ -195,6 +195,15 @@ namespace SitioWeb.Controllers
                 return RedirectToAction("Listar");
             else
                 return View();
+        }
+
+
+        //CONTROLES NODULACION
+        [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
+        public IActionResult DetallesNodulo(string IDnodulo) //Vista de información sobre un nodulo, esta vista está disponible solo para el usuario con permisos
+        {
+            var oDetalle = _PlantasDatos.ObtenerNodoConFoto(IDnodulo);
+            return View(oDetalle);
         }
 
 

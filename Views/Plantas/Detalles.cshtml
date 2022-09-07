@@ -130,8 +130,9 @@
 </div>
 
 @if (Model.Nodula == "Si")
-{
-    var item = Model.ID;
+        {
+            var item = Model.ID;
+            var nodula = Model.Nodula;
 
     <div style="position: absolute; margin-left:610px; margin-top:-50px" id="BotonNodula">
         <a asp-action="GuardarNodulo" asp-controller="Plantas" class="btn btn-dark btn-sm" asp-route-ID="@item"> <i class="bi bi-plus-circle"></i> Agregar Nódulo</a>

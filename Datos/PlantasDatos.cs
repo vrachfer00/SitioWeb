@@ -361,6 +361,60 @@ namespace SitioWeb.Datos
         }
 
 
+
+        //Procedimiento que permite obtener info de una planta específica según el ID, incluye la foto de la planta
+        public PlantasNodulan ObtenerNodoConFoto(string IdNodo)
+        {
+            var oContacto = new PlantasNodulan();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ObtenerNodo", conexion);
+                cmd.Parameters.AddWithValue("IdNodo", IdNodo); //Enviar parámetro
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())//ciclo para leer cada registro de la tabla
+                    {
+                        oContacto.IdNodulo = (dr["IdNodulo"]).ToString();
+                        oContacto.Indiv = Convert.ToInt32(dr["Indiv"]);
+                        oContacto.NombreCientificoPlanta = (dr["NombreCientificoPlanta"]).ToString();
+                        oContacto.CantidadNodos = Convert.ToInt32(dr["CantidadNodos"]);
+                        oContacto.FormaNodo = (dr["FormaNodo"]).ToString();
+                        oContacto.TipoNodo = (dr["TipoNodo"]).ToString();
+                        oContacto.TamanoNodo = Convert.ToInt32(dr["TamanoNodo"]);
+                        oContacto.Fecha = (dr["Fecha"]).ToString();
+                        oContacto.Proyecto = (dr["Proyecto"]).ToString();
+                        oContacto.Permiso = (dr["Permiso"]).ToString();
+                        oContacto.FiloBacteria = (dr["FiloBacteria"]).ToString();
+                        oContacto.GeneroBacteria = (dr["GeneroBacteria"]).ToString();
+                        oContacto.Rhizobio = (dr["Rhizobio"]).ToString();
+                        oContacto.Gram = (dr["Gram"]).ToString();
+                        oContacto.Secuencia = (dr["Secuencia"]).ToString();
+                        oContacto.IDPlanta = Convert.ToInt32(dr["IDPlanta"]);
+                        oContacto.TipoFoto = (dr["TipoFoto"]).ToString();
+
+                        if (!Convert.IsDBNull(dr["FotoNodulo"])) //Si el campo Imagen no está vacío hace la conversión
+                        {
+                            oContacto.FotoNodulo = Convert.ToBase64String((byte[])dr["FotoNodulo"]);
+                        }
+                        else
+                        {
+                            // do something else
+                        }
+
+                    }
+                }
+            }
+
+            return oContacto;
+        }
+
+
         //Procedimiento para editar info de una planta
         public bool Editar(PlantasTotalModel ocontacto)
         {
@@ -544,6 +598,39 @@ namespace SitioWeb.Datos
             }
 
             return subfamilias;
+        }
+
+
+        //Procedimiento que permite obtener la lista de nódulo según el ID de la planta
+        public List<PlantasNodulan> ListarNodosPorID(int ID)
+        {
+
+            var resultado = new List<PlantasNodulan>();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ListarNodosPorID", conexion);
+                cmd.Parameters.AddWithValue("IDPlanta", ID); //Enviar parámetro
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())//ciclo para leer cada registro de la tabla
+                    {
+                        resultado.Add(new PlantasNodulan()
+                        {
+                            IdNodulo = dr["IdNodulo"].ToString(),
+                        });
+                    }
+                }
+
+
+            }
+
+            return resultado;
         }
 
 
