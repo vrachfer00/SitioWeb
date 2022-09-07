@@ -547,5 +547,38 @@ namespace SitioWeb.Datos
         }
 
 
+        //Procedimiento que permite obtener la lista de nódulo según el ID de la planta
+        public List<PlantasNodulan> ListarNodosPorID(int ID)
+        {
+
+            var resultado = new List<PlantasNodulan>();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ListarNodosPorID", conexion);
+                cmd.Parameters.AddWithValue("IDPlanta", ID); //Enviar parámetro
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())//ciclo para leer cada registro de la tabla
+                    {
+                        resultado.Add(new PlantasNodulan()
+                        {
+                            IdNodulo = dr["IdNodulo"].ToString(),
+                        });
+                    }
+                }
+
+
+            }
+
+            return resultado;
+        }
+
+
     }
 }
