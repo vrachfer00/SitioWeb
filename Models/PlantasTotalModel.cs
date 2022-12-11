@@ -11,51 +11,67 @@ namespace SitioWeb.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage = "El campo Nombre Científico es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string NombreCientifico { get; set; }
 
         [Required(ErrorMessage = "El campo Género es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string GeneroHosp { get; set; }
 
         [Required(ErrorMessage = "El campo Nombre Común es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string NombreComun { get; set; }
 
         [Required(ErrorMessage = "El campo Subfamilia es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Subfamilia { get; set; }
 
         [Required(ErrorMessage = "El campo Tipo de Hojas es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string TipoHojas { get; set; }
 
         [Required(ErrorMessage = "El campo Morfología de hojas es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string MorfoHojas { get; set; }
 
         [Required(ErrorMessage = "El campo Posición de hojas es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string PosHojas { get; set; }
 
         [Required(ErrorMessage = "El campo Posición de foliolos es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string PosFoliolos { get; set; }
 
         [Required(ErrorMessage = "El campo Color de flor es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string ColorFlor { get; set; }
 
         [Required(ErrorMessage = "El campo Tipo de flor es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string TipoFlor { get; set; }
 
         [Required(ErrorMessage = "El campo Pétalos es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio, solo se aceptan números")]
         public int Petalos { get; set; }
 
         [Required(ErrorMessage = "El campo Espinas es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Espinas { get; set; }
 
         [Required(ErrorMessage = "El campo Amenazado es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Amenazado { get; set; }
 
         [Required(ErrorMessage = "El campo Color de raíz es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string ColorRaiz { get; set; }
 
         [Required(ErrorMessage = "El campo Simbionte es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Simbionte { get; set; }
 
         [Required(ErrorMessage = "El campo Nodula es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Nodula { get; set; }
 
         public string tipoImagen { get; set; } = null!;
@@ -68,47 +84,61 @@ namespace SitioWeb.Models
     {
         //Aquí declaro las variables para PlantasNodulan
         [Required(ErrorMessage = "El campo Id de Nódulo es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string IdNodulo { get; set; }
 
         [Required(ErrorMessage = "El campo Individuo es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public int Indiv { get; set; }
 
         public string NombreCientificoPlanta { get; set; }
 
         [Required(ErrorMessage = "El campo Cantidad de nodos es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio, solo se aceptan números")]
         public int CantidadNodos { get; set; }
 
         [Required(ErrorMessage = "El campo Forma de nodo es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string FormaNodo { get; set; }
 
         [Required(ErrorMessage = "El campo Tipo de nodo es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string TipoNodo { get; set; }
 
         [Required(ErrorMessage = "El campo Tamaño de nodo es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio, solo se aceptan números")]
         public int TamanoNodo { get; set; }
 
         [Required(ErrorMessage = "El campo Fecha es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Fecha { get; set; } //No se si string puede ser fecha
 
         [Required(ErrorMessage = "El campo Proyecto es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Proyecto { get; set; }
 
         [Required(ErrorMessage = "El campo Permiso es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Permiso { get; set; }
 
         [Required(ErrorMessage = "El campo Permiso es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string FiloBacteria { get; set; }
 
         [Required(ErrorMessage = "El campo Género de bacteria es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string GeneroBacteria { get; set; }
 
         [Required(ErrorMessage = "El campo Rhizobio es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Rhizobio { get; set; }
 
         [Required(ErrorMessage = "El campo Gram es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Gram { get; set; }
 
         [Required(ErrorMessage = "El campo Secuencia es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio")]
         public string Secuencia { get; set; }
 
         public int IDPlanta { get; set; }
@@ -136,5 +166,14 @@ namespace SitioWeb.Models
     {
         public string Subfamilia { get; set; }
         public List<InfoPlantaSubfamilia> Plantas { get; set; }
+    }
+
+    //Modelo para mostrar las subfamilias en la página principal con foto
+    public class Subfamilias
+    {
+        public string Subfamilia { get; set; }
+        public string Foto { get; set; }
+        public string Tipo { get; set; }
+
     }
 }

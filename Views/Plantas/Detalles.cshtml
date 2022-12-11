@@ -7,7 +7,7 @@
 
 
 <div>
-    <h4>Detalles del hospedero</h4><hr />
+    <h3 style="font-style:italic"> @Html.DisplayFor(model => model.NombreCientifico)</h3><hr />
 
     <div style="position: absolute; margin-left:530px; margin-top:40px">
         @if (Model != null && !String.IsNullOrEmpty(Model.Imagen))
@@ -33,13 +33,13 @@
         <dt class="col-sm-2">
             <label class="form-label">Nombre científico</label>
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-10" style="font-style:italic">
             @Html.DisplayFor(model => model.NombreCientifico)
         </dd>
         <dt class="col-sm-2">
             <label class="form-label">Género</label>
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-10" style="font-style:italic">
             @Html.DisplayFor(model => model.GeneroHosp)
         </dd>
         <dt class="col-sm-2">
@@ -146,8 +146,9 @@
 <br />
 
 <hr />
+
 <div class="boton text-center">
-    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark btn-sm">Regresar</a>
+    <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
 </div>
 
 

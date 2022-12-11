@@ -600,6 +600,39 @@ namespace SitioWeb.Datos
             return subfamilias;
         }
 
+        //Procedimiento para listar subfamilias e incluir imagen de cada una
+        public List<Subfamilias> ListaDeSubfamilias()
+        {
+
+            var resultado = new List<Subfamilias>();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ListaDeSubfamilias", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())//ciclo para leer cada registro de la tabla
+                    {
+                        resultado.Add(new Subfamilias()
+                        {
+                            Subfamilia = dr["Subfamilia"].ToString(),
+                            Foto = Convert.ToBase64String((byte[])dr["Foto"]),
+                            Tipo = dr["Tipo"].ToString(),
+                        });
+                    }
+                }
+
+
+            }
+
+            return resultado;
+        }
+
 
         //Procedimiento que permite obtener la lista de nódulo según el ID de la planta
         public List<PlantasNodulan> ListarNodosPorID(int ID)

@@ -22,18 +22,24 @@ namespace SitioWeb.Controllers
 
         public IActionResult Principal() //Vista de la página principal 
         {
-            ViewBag.Subfamilias = _PlantasDatos.ListarSubfamilias();
-            return View();
+            var ListaSubfamilias = _PlantasDatos.ListaDeSubfamilias();
+            return View(ListaSubfamilias);
         }
 
         public IActionResult Login() //Vista de la página de Inicio de Sesión
         {
-            return View();
+            UsuariosModel VistaLogin = new UsuariosModel();
+            return View(VistaLogin);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string usuario, string clave) //Recibe los parámetros para iniciar sesión, las cookies trabajan con métodos asíncronos
+        public async Task<IActionResult> Login(UsuariosModel VistaLogin, string usuario, string clave) //Recibe los parámetros para iniciar sesión, las cookies trabajan con métodos asíncronos
         {
+            //Validación de campos vacíos
+            if (!ModelState.IsValid)
+            {
+                return View(VistaLogin);
+            }
 
             UsuariosModel objeto = new UsuarioDatos().EncontrarUsuario(usuario, clave);
 

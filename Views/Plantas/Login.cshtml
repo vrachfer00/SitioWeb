@@ -24,7 +24,7 @@
                             <span class="input-group-text bg-success">
                                 <i class="bi bi-person-plus-fill text-white"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="Usuario" name="usuario" />
+                            <input type="text" class="form-control" placeholder="Correo" name="usuario" />
                             <span asp-validation-for="Usuario" class="text-danger"></span>
                         </div>
 
@@ -37,9 +37,9 @@
                         </div>
 
                         <div class="botones text-center">
-                            <button class="btn btn-success text-center mt-2" type="submit"> Ingresar </button> <br /> <br />
-                            <a class="text-center" asp-action="Listar" asp-controller="Plantas">¿Olvidó su contraseña?</a> <br/>
-                            <a class="text-center" asp-action="Principal" asp-controller="Plantas">Volver</a>
+                            <button class="btn btn-success btn-block text-center mt-2" type="submit"> Ingresar </button> <br /> <br />
+                            <a class="text-center " asp-action="Listar" asp-controller="Plantas">¿Olvidó su contraseña?</a> <br />
+                            <a class="btn btn-light btn-sm text-center" asp-action="Principal" asp-controller="Plantas"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
                         </div>
                     </div>
 

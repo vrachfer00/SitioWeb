@@ -9,41 +9,7 @@
 <html>
 <head>
     <style>
-        .button {
-            background-color: #181818;
-            border-radius: 8px;
-            border-style: none;
-            box-sizing: border-box;
-            color: #FFFFFF;
-            cursor: pointer;
-            display: inline-block;
-            font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            height: 35px;
-            line-height: 20px;
-            list-style: none;
-            margin: 0;
-            outline: none;
-            padding: 10px 16px;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            text-decoration-color: none;
-            transition: color 100ms;
-            vertical-align: baseline;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-        }
-
-            .button:hover,
-            .button:focus {
-                background-color: #181818;
-                text-decoration: none;
-                text-decoration-color: none;
-            }
-
+           
     </style>
 </head>
 <body>
@@ -52,14 +18,14 @@
     <br />
     <h1 class="text-center" style="font-style:italic;"> @Html.DisplayFor(model => model.NombreCientifico) </h1>
     <br />
-    <br />
 
     @if (Model != null && !String.IsNullOrEmpty(Model.Imagen))
     {
-        <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" class="card-img-top" width="320" height="600" style="border: 12px solid #31A34D" alt="Foto de hospedero">
-
+        <div class="col text-center">
+        <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" width="400" height="400" style="border: 8px solid #31A34D" alt="Foto de hospedero">
+        </div>
     }
-    else //no muestra la imagen random
+    else 
     {
         <div class="col text-center">
             <img src="https://denac-public.s3.amazonaws.com/assets/img/catalog/thumbnails/accesorios/iluminacion/cuartos/nissan/00418081r.png" width="400" height="400" alt="Sin Foto">
@@ -81,9 +47,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style="font-size:15px;">@Html.DisplayFor(model => model.TipoHojas)</td>
-                    <td style="font-size:15px;">@Html.DisplayFor(model => model.MorfoHojas)</td>
-                    <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorFlor)</td>
+                    <td style="font-size: 17px;">@Html.DisplayFor(model => model.TipoHojas)</td>
+                    <td style="font-size: 17px;">@Html.DisplayFor(model => model.MorfoHojas)</td>
+                    <td style="font-size: 17px;">@Html.DisplayFor(model => model.ColorFlor)</td>
                 </tr>
         </table><br /><br />
 
@@ -97,9 +63,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style="font-size:15px;">@Html.DisplayFor(model => model.Simbionte)</td>
-                    <td style="font-size:15px;">@Html.DisplayFor(model => model.ColorRaiz)</td>
-                    <td style="font-size:15px;">@Html.DisplayFor(model => model.Nodula)</td>
+                    <td style="font-size:17px;">@Html.DisplayFor(model => model.Simbionte)</td>
+                    <td style="font-size:17px;">@Html.DisplayFor(model => model.ColorRaiz)</td>
+                    <td style="font-size:17px;">@Html.DisplayFor(model => model.Nodula)</td>
                 </tr>
         </table><br />
 
@@ -137,7 +103,7 @@
     </div>
 
     <div class="botones text-center">
-        <a href="javascript:history.back()" class="button"> Regresar </a> <!--Recordar darle formato a este botón-->
+        <a href="javascript:history.back()" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar </a>
     </div> 
 
 </body>

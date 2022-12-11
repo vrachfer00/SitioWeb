@@ -10,10 +10,11 @@ namespace SitioWeb.Models
     {
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "El nombre de usuario es obligatorio")]
+        [Required(ErrorMessage = "El correo electrónico es obligatorio")]
+        [EmailAddress(ErrorMessage = "Debe utilizar el formato de correo electrónico")]
         public string Usuario { get; set; }
 
-        [Required(ErrorMessage = "El campo contraseña es obligatorio")]
+        [Required(ErrorMessage = "La contraseña es obligatorio")]
         public string Clave { get; set; }
     }
 }

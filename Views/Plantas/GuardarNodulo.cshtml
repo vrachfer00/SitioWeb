@@ -6,7 +6,7 @@
 }
 
 <div class="card">
-    <h5 class="card-header">Agregar nódulo a la planta @ViewData["NombrePlanta"]</h5>
+    <h5 class="card-header">Agregar individuo a la planta @ViewData["NombrePlanta"]</h5>
 
     <div class="card-body col-md-9 col-sm-12" id="FormNodula">
 
@@ -75,19 +75,19 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Filo de Bacteria</label>
+            <label class="form-label">Filo de organismo</label>
             <input asp-for="FiloBacteria" type="text" class="form-control" id="txtFiloBacteria">
             <span asp-validation-for="FiloBacteria" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Género de Bacteria</label>
+            <label class="form-label">Género de organismo</label>
             <input asp-for="GeneroBacteria" type="text" class="form-control" id="txtGeneroBacteria">
             <span asp-validation-for="GeneroBacteria" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Rizobio</label>
+            <label class="form-label">¿Es rizobio?</label>
             <select class="form-control" aria-label=".form-select-lg example" asp-for="Rhizobio" id="txtRhizobio" required>
                 <option disabled selected hidden>Seleccione</option>
                 <option value="Si">Si</option>
@@ -120,8 +120,8 @@
         <!--Imagen Nodulo-->
 
         <div class="botones text-center">
-            <a asp-action="Listar" asp-controller="Plantas" class="btn btn-outline-dark btn-sm">Regresar</a>
-            <button type="submit" class="btn btn-outline-dark btn-sm" id="save">Guardar</button>
+            <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
+            <button type="submit" class="btn btn-dark btn-sm" id="save"> <i class="bi bi-save-fill"></i> Guardar</button>
         </div> <br />
 
     </div>
