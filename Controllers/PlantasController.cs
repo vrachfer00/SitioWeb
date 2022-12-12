@@ -161,7 +161,7 @@ namespace SitioWeb.Controllers
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
         public IActionResult Editar(int ID) //Este método muestra la vista editar, esta vista está disponible solo para el usuario con permisos
         {
-            var ocontacto = _PlantasDatos.ObtenerPlanta(ID);
+            var ocontacto = _PlantasDatos.ObtenerPlantaConFoto(ID);
             return View(ocontacto);
         }
 
