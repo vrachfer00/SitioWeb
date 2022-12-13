@@ -420,7 +420,6 @@ namespace SitioWeb.Datos
         {
             bool rpta;
 
-
             try
             {
                 var cn = new Conexion();
@@ -461,7 +460,7 @@ namespace SitioWeb.Datos
         }
 
 
-        //Procedimiento para editar info de una planta CON FOTO NO SIRVE
+        //Procedimiento para editar info de una planta CON FOTO NO SIRVE y siempre retorna falso
         public bool EditarConFoto(PlantasTotalModel ocontacto)
         {
             bool rpta;
@@ -489,31 +488,31 @@ namespace SitioWeb.Datos
                     cmd.Parameters.AddWithValue("Espinas", ocontacto.Espinas);
                     cmd.Parameters.AddWithValue("Amenazado", ocontacto.Amenazado);
                     cmd.Parameters.AddWithValue("ColorRaiz", ocontacto.ColorRaiz);
-                    cmd.Parameters.AddWithValue("ColorRaiz", ocontacto.ColorRaiz);
-                    cmd.Parameters.AddWithValue("Simbionte", ocontacto.ColorRaiz);
+                    cmd.Parameters.AddWithValue("Simbionte", ocontacto.Simbionte);
                     cmd.Parameters.AddWithValue("Nodula", ocontacto.Nodula);
+
                     cmd.Parameters.AddWithValue("tipoImagen", ocontacto.tipoImagen);
                     byte[] img = Convert.FromBase64String(ocontacto.Imagen);
                     cmd.Parameters.AddWithValue("Imagen", img);
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
-                rpta = true;
+                rpta=true;
 
             }
-            catch (Exception e)
+            catch (Exception e) //No devuelve ningún mensaje de error
             {
                 string error = e.Message;
-                rpta = false;
+                rpta=false;
             }
 
             return rpta;
+
         }
 
-
-
         //Procedimiento para eliminar info de una planta
-        public bool Eliminar(int ID)
+        public bool Eliminar(int ID) //Eliminar todos los registros de nódulos que tenga la planta y luego eliminar la planta para que funcione
         {
             bool rpta;
 

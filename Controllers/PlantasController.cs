@@ -167,13 +167,13 @@ namespace SitioWeb.Controllers
 
   
         [HttpPost]
-        public IActionResult Editar(PlantasTotalModel oContacto) //Este método permite editar la info de una planta
+        public IActionResult Editar(PlantasTotalModel objs) //Este método permite editar la info de una planta
         {
             //Validación de campos vacíos
             if (!ModelState.IsValid)
                 return View();
 
-           var respuesta = _PlantasDatos.EditarConFoto(oContacto);
+           var respuesta = _PlantasDatos.EditarConFoto(objs);
 
 
            if (respuesta)

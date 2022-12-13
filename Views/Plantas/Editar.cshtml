@@ -3,14 +3,17 @@
 @{
     ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-
 }
 
 <div class="card">
     <h5 class="card-header">Editar hospedero</h5>
 
     <div class="card-body col-md-9 col-sm-12">
+
+        <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input asp-for="ID" disabled="disabled" type="text" class="form-control" id="txtID">
+        </div> 
 
         <div class="mb-3">
             <label class="form-label">Nombre Científico</label>
@@ -32,8 +35,13 @@
 
         <div class="mb-3">
             <label class="form-label">Subfamilia</label>
-            <input asp-for="Subfamilia" type="text" class="form-control" id="txtSubfamilia">
-            <span asp-validation-for="Subfamilia" class="text-danger"></span>
+            <select class="form-control" aria-label=".form-select-lg example" asp-for="Subfamilia" id="selectSubfamilia" required>
+                <option disabled selected hidden>Seleccione</option>
+                <option value="Papilionoideae">Papilionoideae</option>
+                <option value="Caesalpinioideae">Caesalpinioideae</option>
+                <option value="Detarioideae">Detarioideae</option>
+                <option value="Cercidoideae">Cercidoideae</option>
+            </select>
         </div>
 
         <div class="mb-3">
@@ -111,11 +119,6 @@
                 <input type="file" id="fupload" accept="image/*">
             </div>
         </div><br />
-
-        <!--
-    <label class="form-label">Seleccione una foto de la planta: </label>
-    <img class="form-control-file" id="img" style="height:240px; border:groove" /> <br />
-    <input type="file" id="fupload" accept="image/*"> -->
         <!--Imagen-->
 
         <div class="mb-3">
@@ -126,13 +129,12 @@
                 <option value="No">No</option>
             </select>
         </div>
-
     </div>
 
 
     <div class="botones text-center">
         <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
-        <button type="submit" class="btn btn-dark btn-sm" id="save"> <i class="bi bi-save-fill"></i> Actualizar</button>
+        <button type="submit" class="btn btn-dark btn-sm" id="update"> <i class="bi bi-save-fill"></i> Actualizar</button>
     </div> <br />
 
     <!--Script de la vista previa-->
@@ -156,12 +158,14 @@
                     ReadImages(this);
                 })
 
-                $('#save').click(function () {
+               //Script del botón actualizar
+                $('#update').click(function () {
                     var obj = {}
+                    obj.ID = $('#txtID').val();
                     obj.NombreCientifico = $('#txtNomCientifico').val();
                     obj.GeneroHosp = $('#txtGenero').val();
                     obj.NombreComun = $('#txtNomComun').val();
-                    obj.Subfamilia = $('#txtSubfamilia').val();
+                    obj.Subfamilia = $('#selectSubfamilia').val();
                     obj.TipoHojas = $('#txtTipoHojas').val();
                     obj.MorfoHojas = $('#txtMorfoHojas').val();
                     obj.PosHojas = $('#txtPosHojas').val();
@@ -172,7 +176,7 @@
                     obj.Espinas = $('#txtEspinas').val();
                     obj.Amenazado = $('#txtAmenazado').val();
                     obj.ColorRaiz = $('#txtRaiz').val();
-                    obj.ColorRaiz = $('#txtSimbionte').val();
+                    obj.Simbionte = $('#txtSimbionte').val();
                     obj.Nodula = $('#selectNodula').val();
 
                     var img = images.split(","); //Separa el string por el valor del parámetro
@@ -180,12 +184,18 @@
                     obj.Imagen = img[1]
 
                     $.ajax({
-                        url: '@Url.Action("Editar", "Plantas")', //Algo no funciona aqui, los dos controladores se llaman igual, puede ser eso
+                        url: '@Url.Action("EditarConFoto", "Plantas")', 
                         type: 'POST',
                         dataType: 'JSON',
                         data: { objs: obj },
                         success: function (data) {
+                            alert(data);
+                        },
 
+                        error: function (request, status, error) {
+
+                            var val = request.responseText;
+                            window.location.href = 'https://localhost:5001/Plantas/Listar'
                         }
 
                     })
