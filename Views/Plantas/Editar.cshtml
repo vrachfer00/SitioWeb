@@ -184,7 +184,7 @@
                     obj.Imagen = img[1]
 
                     $.ajax({
-                        url: '@Url.Action("EditarConFoto", "Plantas")', 
+                        url: '@Url.Action("Editar", "Plantas")', 
                         type: 'POST',
                         dataType: 'JSON',
                         data: { objs: obj },
