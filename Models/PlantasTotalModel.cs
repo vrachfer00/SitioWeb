@@ -66,7 +66,6 @@ namespace SitioWeb.Models
         [Display(Prompt = "Este campo es obligatorio")]
         public string ColorRaiz { get; set; }
 
-        [Required(ErrorMessage = "El campo Simbionte es obligatorio")]
         [Display(Prompt = "Este campo es obligatorio")]
         public string Simbionte { get; set; }
 
@@ -88,7 +87,7 @@ namespace SitioWeb.Models
         public string IdNodulo { get; set; }
 
         [Required(ErrorMessage = "El campo Individuo es obligatorio")]
-        [Display(Prompt = "Este campo es obligatorio")]
+        [Display(Prompt = "Este campo es obligatorio, solo se aceptan números")]
         public int Indiv { get; set; }
 
         public string NombreCientificoPlanta { get; set; }

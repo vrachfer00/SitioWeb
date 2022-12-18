@@ -13,7 +13,7 @@
         <div class="mb-3">
             <label class="form-label">ID</label>
             <input asp-for="ID" disabled="disabled" type="text" class="form-control" id="txtID">
-        </div> 
+        </div>
 
         <div class="mb-3">
             <label class="form-label">Nombre Científico</label>
@@ -113,13 +113,23 @@
         <!--Imagen-->
         <div class="col-sm-6">
             <label class="form-label">Seleccione una foto de la planta: </label>
-            <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" class="form-control-file" id="img" height="240" width="240" style="border:1px">
+            @if (Model != null && !String.IsNullOrEmpty(Model.Imagen))
+            {
+                <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" class="form-control-file" id="img" height="240" width="240" style="border:1px">
+            }
+            else
+            {
+                <div class="col text-center">
+                    <img src="https://denac-public.s3.amazonaws.com/assets/img/catalog/thumbnails/accesorios/iluminacion/cuartos/nissan/00418081r.png" class="form-control-file" id="img" width="240" height="240">
+                </div>
+            }
             <div id="chooseFile">
                 <br />
                 <input type="file" id="fupload" accept="image/*">
             </div>
         </div><br />
         <!--Imagen-->
+
 
         <div class="mb-3">
             <label class="form-label">Nodula</label>

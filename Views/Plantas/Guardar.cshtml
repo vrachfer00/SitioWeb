@@ -101,12 +101,6 @@
             <span asp-validation-for="ColorRaiz" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Simbionte</label> 
-            <input asp-for="Simbionte" type="text" class="form-control" id="txtSimbionte">
-            <span asp-validation-for="Simbionte" class="text-danger"></span>
-        </div>
-
         <!--Imagen Planta-->
         <div class="col-sm-6">
             <label class="form-label">Seleccione una foto de la planta: </label>
@@ -123,6 +117,12 @@
                 <option value="No">No</option>
             </select>
         </div>
+
+        <div class="mb-3" id="MostrarSimbionte">
+            <label class="form-label">Simbionte</label>
+            <input asp-for="Simbionte" type="text" class="form-control" id="txtSimbionte">
+            <span asp-validation-for="Simbionte" class="text-danger"></span>
+        </div>
     </div>
 
     <div class="botones text-center">
@@ -133,6 +133,22 @@
 
     <!--Código de los scripts-->
     <script type="text/javascript">
+
+        //Script para mostrar el Botón Nuevo Nodulo ****REVISAR
+        const el = document.getElementById('selectNodula');
+        const box = document.getElementById('MostrarSimbionte');
+        box.style.display = 'none';
+
+        el.addEventListener('change', function handleChange(event) {
+            if (event.target.value === 'Si') {
+                box.style.display = 'block';
+
+            } else {
+                box.style.display = 'block';
+                document.getElementById('txtSimbionte').disabled = true;
+                document.getElementById("txtSimbionte").value = "No nodula";
+            }
+        });
 
                 //Script de la vista previa de la fotoplanta
                 var images
