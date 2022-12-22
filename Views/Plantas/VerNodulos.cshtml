@@ -5,107 +5,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-              }
 
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-                   }
-    </style>
-</head>
-<body>
 
-    <br /> <h1 class="text-center" style="font-style: italic;"> @ViewData["NombrePlanta"] </h1> <br />
-    <h5 class="text-center"> Lista de individuos asociados </h5> <br />
+<div class="card">
+    <h5 class="card-header text-center"> Lista de nodos de @ViewData["NombrePlanta"] </h5>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-plus-circle"></i> Nuevo individuo</a>
+        <br /> <br />
 
-    <div class="container text-center">
-        <div class="row row-cols-1 row-cols-md-3 g-4" style="background-color: #E1FADB;">
-            @foreach (var item in Model)
-            {
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">ID Nódulo</th>
+                    <th scope="col" class="text-center">Filo</th>
+                    <th scope="col" class="text-center">Género</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
 
-                <a asp-action="" asp-controller="Plantas" class="button btn btn-light btn-sm" onclick="getId(@item.IdNodulo)" data-toggle="modal" data-target="#myModal" data-id="@item.IdNodulo"> Nodo @item.IdNodulo </a>
+                        <td class="text-center">@item.IdNodulo</td>
+                        <td class="text-center"> @item.FiloBacteria </td>
+                        <td class="text-center" style="font-style:italic">@item.GeneroBacteria</td>
+                        <td class="text-center">
+                            <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.IdNodulo"> <i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-action="DetallesNodulo" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.IdNodulo"> <i class="bi bi-eye-fill"></i> Detalles</a>
+                            <a asp-action="Eliminar" asp-controller="Plantas" class="btn btn-danger btn-sm" asp-route-ID="@item.IdNodulo"> <i class="bi bi-trash"></i> Eliminar</a>
+                        </td>
 
-            }
-        </div>
-    </div> <br /> <br />
+                    </tr>
+                }
 
-    <div class="botones text-center">
-        <a href="javascript:history.back()" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar </a>
-    </div> <br />
+            </tbody>
+        </table>
 
-    <!--Modal-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h2 class="modal-title w-100 text-center"> Individuo <span id="idHolder"></span> </h2>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <div class="modal-body">
-
-                    <div class="card-body w-100 text-center">
-
-                        <!--<button id="modalDetailsButton" type="submit" class="btn btn-primary" asp-controller="Plantas" asp-action="DetallesNodulo"> Prueba</button>-->
-
-                        <a asp-action="DetallesNodulo" asp-controller="Plantas" class="button btn btn-light btn-sm" id="eventId" asp-route-ID="ana"> <i class="bi bi-eye-fill"></i> Detalles </a>
-
-                        <a asp-action="" asp-controller="Plantas" class="button btn btn-light btn-sm" id="eventId" asp-route-id=""> <i class="bi bi-pencil-square"></i> Actualizar </a>
-                        <a asp-action="" asp-controller="Plantas" class="button btn btn-light btn-sm" id="eventId" asp-route-ID=""> <i class="bi bi-trash3-fill"></i>Eliminar </a>
-
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-
-                </div>
-            </div>
+        <div class="botones text-center">
+            <a href="javascript:history.back()" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar </a>
         </div>
 
     </div>
-
-    <!--Script del modal-->
-
-
-    <script type="text/javascript">
-
-        var clickId;
-        $(document).on("click", ".button", function (event) {
-            $(event.currentTarget).find('asp-route-id').val(getId);
-            var btn = $(this).find('#modalDetailsButton');
-            console.log(clickId)
-            btn.attr('formaction', '/Plantas/DetallesNodulo/' + clickId);
-        });
-        function getId(clicked_id) {
-            this.clickId = clicked_id;
-        }
-
-        //Sí funciona, permite obtener el valor de IdNodulo y mostrarlo en el título de cada PopUp
-        $(document).on("click", ".button", function () {
-            var eventId = $(this).data('id');
-            $('#idHolder').html(eventId);
-        });
-
-    </script>
-
-</body>
-</html>
-
+</div>

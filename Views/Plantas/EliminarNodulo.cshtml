@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "EliminarNodulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <h5 class="card-header">Eliminar individuo asociado</h5>
+    <div class="card-body">
+
+        <form asp-action="Eliminar" asp-controller="Plantas" method="post">
+
+            <!-- <input asp-for="ID" type="hidden" class="form-control"> -->
+
+            <div class="alert alert-danger" role="alert">
+                ¿Desea eliminar el registro de la planta? <!--Ponerle cursiva al nombre científico-->
+            </div>
+
+            <div class="botones text-center">
+                <a asp-action="Listar" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
+                <button type="submit" class="btn btn-danger btn-sm"> <i class="bi bi-trash3-fill"></i> Eliminar</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

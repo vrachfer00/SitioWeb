@@ -657,6 +657,8 @@ namespace SitioWeb.Datos
                         resultado.Add(new PlantasNodulan()
                         {
                             IdNodulo = dr["IdNodulo"].ToString(),
+                            FiloBacteria = dr["FiloBacteria"].ToString(),
+                            GeneroBacteria = dr["GeneroBacteria"].ToString(),
                         });
                     }
                 }
