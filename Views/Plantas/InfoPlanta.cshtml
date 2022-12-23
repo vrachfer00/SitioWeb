@@ -22,10 +22,10 @@
     @if (Model != null && !String.IsNullOrEmpty(Model.Imagen))
     {
         <div class="col text-center">
-        <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" width="400" height="400" style="border: 8px solid #31A34D" alt="Foto de hospedero">
+            <img src="@Html.DisplayFor(model => model.tipoImagen), @Html.DisplayFor(model => model.Imagen)" width="450" height="450" style="border: 5px solid #161616" alt="Foto de hospedero">
         </div>
     }
-    else 
+    else
     {
         <div class="col text-center">
             <img src="https://denac-public.s3.amazonaws.com/assets/img/catalog/thumbnails/accesorios/iluminacion/cuartos/nissan/00418081r.png" width="400" height="400" alt="Sin Foto">
@@ -36,13 +36,17 @@
     <br />
     <br />
 
-    <div style="text-align:center;">
-        <table class="table table-borderless">
+    <h2 class="text-center"> Características del hospedero </h2>
+    <p class="text-center" style="font-weight:bold"> (Plant features) </p> <hr />
+    <br />
+
+    <div class="text-center">
+        <table class="table table-borderless ">
             <thead>
                 <tr>
-                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Tipo de hoja</th>
-                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Morfología de hoja</th>
-                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Color de flor</th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Tipo de hoja <p class="text-center" style="font-weight:bold; font-size:12px"> (Leaf type) </p></th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Morfología de la hoja <p class="text-center" style="font-weight:bold; font-size:12px"> (Leaf Morphology) </p></th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Color de la flor <p class="text-center" style="font-weight:bold; font-size:12px"> (Flower color) </p></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,14 +55,12 @@
                     <td style="font-size: 17px;">@Html.DisplayFor(model => model.MorfoHojas)</td>
                     <td style="font-size: 17px;">@Html.DisplayFor(model => model.ColorFlor)</td>
                 </tr>
-        </table><br /><br />
 
-        <table class="table table-borderless">
             <thead>
                 <tr>
-                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Simetría de flor </th>
-                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Color de raíz</th>
-                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Nodulación</th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Simetría de la flor <p class="text-center" style="font-weight:bold; font-size:12px"> (Flower symmetry) </p></th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i> Color de la raíz <p class="text-center" style="font-weight:bold; font-size:12px"> (Root color) </p></th>
+                    <th scope="col" style="font-size:20px;"> <i class="bi bi-flower3" style="font-size: 1.8rem; color: forestgreen;"></i>Nodulación <p class="text-center" style="font-weight:bold; font-size:12px"> (Nodulation) </p></th>
                 </tr>
             </thead>
             <tbody>
@@ -67,9 +69,9 @@
                     <td style="font-size:17px;">@Html.DisplayFor(model => model.ColorRaiz)</td>
                     <td style="font-size:17px;">@Html.DisplayFor(model => model.Nodula)</td>
                 </tr>
-        </table><br />
-
+        </table>
     </div>
+
 
     <div>
         <!--Condicional para determinar si la planta nodula o no y mostrar la información de los nódulos-->
@@ -78,11 +80,10 @@
             <hr style="height:1px" color="#31A34D">
             <br />
 
-            <h1 class="text-center"> Taxonomía de simbiontes asociados </h1>
-            <p class="text-center"> Taxonomy of associated symbionts </p>
+            <h2 class="text-center"> Taxonomía de simbiontes asociados </h2>
+            <p class="text-center" style="font-weight:bold"> (Taxonomy of associated symbionts) </p> <hr />
             <br />
-            <br />
-
+       
             <div style="text-align:center;">
                 <table class="table table-borderless">
                     <thead>
@@ -101,7 +102,7 @@
 
     <div class="botones text-center">
         <a href="javascript:history.back()" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar </a>
-    </div> 
+    </div>
 
 </body>
 </html>
