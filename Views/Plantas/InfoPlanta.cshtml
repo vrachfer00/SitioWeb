@@ -71,6 +71,10 @@
                 </tr>
         </table>
     </div>
+    @if (Model.Nodula == "No")
+    {
+        <hr />
+    }
 
 
     <div>
@@ -83,7 +87,7 @@
             <h2 class="text-center"> Taxonomía de simbiontes asociados </h2>
             <p class="text-center" style="font-weight:bold"> (Taxonomy of associated symbionts) </p> <hr />
             <br />
-       
+
             <div style="text-align:center;">
                 <table class="table table-borderless">
                     <thead>
@@ -95,7 +99,7 @@
                         <tr>
                             <td style="font-style: italic; font-size:17px">@Html.DisplayFor(model => model.Simbionte)</td>
                         </tr>
-                </table><br /><br />
+                </table><br />
             </div>
         }
     </div>
