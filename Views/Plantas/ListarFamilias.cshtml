@@ -23,7 +23,7 @@
         }
 
         .card-body {
-            background-color: rgba(109, 192, 103, 0.3);
+            background-color: rgba(109, 192, 103, 0.2);
         }
     </style>
 </head>
@@ -42,7 +42,8 @@
             <div class="container">
                 <div class="d-flex card h-100">
                     <a asp-action="InfoPlanta" asp-controller="Plantas" class="card-img-top" asp-route-ID="@planta.ID">
-                        <img src="https://www.cannabismagazine.net/wp-content/uploads/2020/10/plantita-cannabis.jpg" class="card-img-top" alt="...">
+
+                        <img src="data:image/png;base64,@(planta.Imagen)" class="card-img-top" height="280" width="200"> <!--Manda error porque hay campos vacios en la BD-->
 
                         <div class="card-img-overlay h-100 d-flex flex-column justify-content-center" style="background-color: rgba(0, 0, 0, 0.5)">
                             <h5 class="card-title text-center text-light" style="font-style:italic; font-size:medium;"> @planta.NombreCientifico </h5>

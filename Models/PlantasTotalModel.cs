@@ -159,6 +159,8 @@ namespace SitioWeb.Models
         public int ID { get; set; }
         public string NombreCientifico { get; set; }
         public string NombreComun { get; set; }
+        public string tipoImagen { get; set; }
+        public string Imagen { get; set; }
     }
 
     public class PlantasPorSubfamilia

@@ -567,7 +567,9 @@ namespace SitioWeb.Datos
                         {
                             ID = Convert.ToInt32(dr["ID"]),
                             NombreCientifico = dr["NombreCientifico"].ToString(),
-                            NombreComun = dr["NombreComun"].ToString()
+                            NombreComun = dr["NombreComun"].ToString(),
+                            tipoImagen = dr["tipoImagen"].ToString(),
+                            Imagen = Convert.ToBase64String((byte[])dr["Imagen"]),
                         });
                     }
                 }
