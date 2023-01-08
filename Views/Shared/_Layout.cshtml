@@ -9,31 +9,40 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="SHORTCUT ICON" href="~/Images/LEGMi-Negro.png">
+
+    <style>
+        .navbar {
+            position: relative;
+            padding-top: 0;
+        }
+
+    </style>
 </head>
 
 <body>
 
     <header>
 
-        <nav class="navbar navbar-expand-lg navbar-toggleable-sm" style="background-color: #6dc067;">
-            <div class="container position-relative" style="margin-left: 20px">
-                <img src="~/Images/ucrsinfondo2.png" alt="LogoUCR" width="310" height="110" class="d-inline-block align-text-top">
-            </div>
-
-            <div class="container position-relative" style="margin-right: 220px">
-                <a class="navbar-brand mx-auto" href="#">
-                    <img src="~/Images/EB.png" alt="LogoUCR" width="200" height="100" class="d-inline-block align-text-top">
-                </a>
-            </div>
-
-
-            <div class="navbar-collapse d-flex align-items-end justify-content-sm-end position-relative" style="margin-right: 20px">
-                <a class="navbar-brand" asp-area="" asp-controller="Plantas" asp-action="Principal">
-                    <img src="~/Images/LEGMi-Negro.png" alt="LogoLAB" width="120" height="70" class="d-inline-block align-text-top">
-                </a>
-            </div>
+        <!--Barra de menú principal-->
+        <nav class="navbar navbar-toggleable navbar-light bg-faded" style="background-color: #6dc067;">
+            <ul class="navbar-nav mx-auto flex-shrink">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><img src="~/Images/ucrsinfondo2.png" alt="one" height="80"></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mx-auto flex-unordered flex-shrink">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#"><img src="~/Images/EB.png" alt="two" height="80"></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mx-auto flex-unordered flex-sm-last">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#"><img src="~/Images/LEGMi-Negro.png" alt="two" height="80"></a>
+                </li>
+            </ul>          
         </nav>
 
+        <!--Barra de menú gris-->
         <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark box-shadow mb-3" style="background-color: #CDCDCD; ">
 
             <div class="navbar-collapse collapse d-flex align-items-end justify-content-sm-end" style="margin-right: 25px">
@@ -58,8 +67,8 @@
     </div>
 
     <footer class="border-top footer text-muted text-center" style="background-color: #6dc067; height:60px">
-        <div class="container text-light">
-            &copy; 2022 - Universidad de Costa Rica
+        <div class="container text-light" style="font-weight:bold">
+            &copy; 2023 - Universidad de Costa Rica
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

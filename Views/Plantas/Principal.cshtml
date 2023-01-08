@@ -18,27 +18,56 @@
     <style>
 
         .image:hover img {
-            opacity: 0.8;
+            opacity: 0.6;
             cursor: pointer
+        }
+
+        .covertext {
+            top: 200px; /* The distance between the div with the top of document */
+            left: 0px; /* Make the div full width */
+            right: 0px; /* Make the div full width */
+            height: 430px;
+            background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://cdn.shopify.com/s/files/1/0565/7080/6458/collections/55.jpg?v=1660111880');
+        }
+
+        .title {
+            position: absolute;
+            font-family: Verdana;
+            font-weight: 600;
+            font-size: 50px;
+            color: #ffffff;
+            text-align: center;
+            width: 100%;
+            margin-top: 180px;
+        }
+
+        .subtitle {
+            position:absolute;
+            font-family: Verdana;
+            font-size: 23px;
+            color: #ffffff;
+            text-align: center;
         }
     </style>
 </head>
 
 <br />
 <!-- Imagen de fondo -->
-<div class="bg-image d-flex justify-content-center align-items-center"
-     style="background-image: url('https://cdn.shopify.com/s/files/1/0565/7080/6458/collections/55.jpg?v=1660111880'); height: 70vh;">
-
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
-        <div class="d-flex justify-content-center align-items-center h-100">
-            <h1 class="text-white mb-0 display-3 font-weight-bold"> Proyecto Fijación Nitrógeno </h1>
+<div class="bg-image">
+    <div class="covertext">
+        <div class="" style="margin-top:0 auto; position:relative">
+            <h1 class="title text-white mb-0 display-3 font-weight-bold"> PROYECTO FIJACIÓN NITRÓGENO </h1>
+            <h3 class="subtitle"></h3>
         </div>
     </div>
 </div>
+
+
+
 <!-- Fin Imagen de fondo -->
 
 <br />
-<h4 class="card-header text-center"> Información del proyecto </h4>
+<h4 class="card-header text-center" style="background-color: #DFF8DC"> Información del proyecto </h4>
 <br />
 <p>En la sección usuario puede accederse a todas las funciones básicas de la página (CRUD), para ingresar a mi mundo</p>
 <p>esto se tiene que iniciar sesión con unas credenciales específicas pero no lo he hecho solo la persona que cuente con usuario y contraseña puede hacer esto</p>
@@ -75,7 +104,7 @@
 <br />
 <!--Fin de Galería-->
 <!--Resultados-->
-<h5 class="card-header text-center"> Resultados preliminares </h5>
+<h4 class="card-header text-center" style="background-color: #DFF8DC"> Resultados preliminares </h4>
 <br />
 
 <div id="carouselExampleControlsNoTouching" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
@@ -115,4 +144,3 @@
 <br />
 <br />
 <!--Fin de Resultados-->
-

@@ -14,41 +14,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-    .card:hover{
-        transform: scale(1.1);
-    }
+        .card:hover {
+            transform: scale(1.1);
+        }
 
-    .card{
-        transition: transform .5s;
-    }
+        .card {
+            transition: transform .5s;
+        }
+
+        .card-body {
+            background-color: rgba(109, 192, 103, 0.3);
+        }
     </style>
 </head>
 
 <br />
-<h1 class="text-center display-4 font-weight-bold" style="font-style:italic;"> @Html.DisplayFor(model => model.Subfamilia) </h1>
+<h1 class="text-center display-4 font-weight-bold"> @Html.DisplayFor(model => model.Subfamilia) </h1>
 <br />
 <br />
 
 
-<!--Aquí va un ciclo para que se muestren cada una de las plantas de cada subfamilia-->
-<div class="row row-cols-1 row-cols-sm-3 g-4">
-    @foreach (var planta in Model.Plantas)
-    {
-    <div class="container">
-        <div class="d-flex card h-100">
-            <a asp-action="InfoPlanta" asp-controller="Plantas" class="card-img-top" asp-route-ID="@planta.ID">
-                <img src="https://www.cannabismagazine.net/wp-content/uploads/2020/10/plantita-cannabis.jpg" class="card-img-top" alt="...">
+<!--Aquí va un ciclo para que se muestren cada una de las plantas de cada subfamilia  style="background-color: #CEECCB -->
+<div class="card-body">
+    <div class="row row-cols-1 row-cols-sm-3 g-4">
+        @foreach (var planta in Model.Plantas)
+        {
+            <div class="container">
+                <div class="d-flex card h-100">
+                    <a asp-action="InfoPlanta" asp-controller="Plantas" class="card-img-top" asp-route-ID="@planta.ID">
+                        <img src="https://www.cannabismagazine.net/wp-content/uploads/2020/10/plantita-cannabis.jpg" class="card-img-top" alt="...">
 
-                <div class="card-img-overlay h-100 d-flex flex-column justify-content-center" style="background-color: rgba(0, 0, 0, 0.4)">
-                    <h5 class="card-title text-center text-light" style="font-style:italic; font-size:medium;"> @planta.NombreCientifico </h5>
-                    <p class="card-text text-center text-light" style="font-size:small"> @planta.NombreComun </p>
+                        <div class="card-img-overlay h-100 d-flex flex-column justify-content-center" style="background-color: rgba(0, 0, 0, 0.5)">
+                            <h5 class="card-title text-center text-light" style="font-style:italic; font-size:medium;"> @planta.NombreCientifico </h5>
+                            <p class="card-text text-center text-light" style="font-size:small"> @planta.NombreComun </p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
+            </div>
+        }
     </div>
-    }
 </div>
-<br/>
+<br />
 <div class="boton text-center">
     <a asp-action="Principal" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
 </div>
