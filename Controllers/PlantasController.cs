@@ -206,11 +206,55 @@ namespace SitioWeb.Controllers
 
         //CONTROLES NODULACION
         [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
-        public IActionResult DetallesNodulo(string IDnodulo) //Vista de información sobre un nodulo, esta vista está disponible solo para el usuario con permisos
+        public IActionResult DetallesNodulo(string IdNodulo) //Vista de información sobre un nodulo, esta vista está disponible solo para el usuario con permisos
         {
-            var oDetalle = _PlantasDatos.ObtenerNodoConFoto(IDnodulo);
+            var oDetalle = _PlantasDatos.ObtenerNodoConFoto(IdNodulo);
             return View(oDetalle);
         }
+
+        [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
+        public IActionResult EliminarNodulo(string IdNodulo) //Este método muestra la vista eliminar
+        {
+            var ocontacto = _PlantasDatos.ObtenerNodoConFoto(IdNodulo);
+            return View(ocontacto);
+        }
+
+
+        [HttpPost]
+        public IActionResult EliminarNodulo(PlantasNodulan oContacto) //Este método permite eliminar la info de una planta, esta vista está disponible solo para el usuario con permisos
+        {
+
+            var respuesta = _PlantasDatos.EliminarNodulo(oContacto.IdNodulo);
+
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
+        }
+
+        [Authorize] //Solo se puede ingresar a esta vista si tiene autorización
+        public IActionResult EditarNodulo(string IdNodulo) //Este método muestra la vista editar, esta vista está disponible solo para el usuario con permisos
+        {
+            var ocontacto = _PlantasDatos.ObtenerNodoConFoto(IdNodulo);
+            return View(ocontacto);
+        }
+
+        [HttpPost]
+        public IActionResult EditarNodulo(PlantasNodulan objs) //Este método permite editar la info de una planta
+        {
+            //Validación de campos vacíos
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _PlantasDatos.EditarNodoConFoto(objs);
+
+
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
+        }
+
 
 
 

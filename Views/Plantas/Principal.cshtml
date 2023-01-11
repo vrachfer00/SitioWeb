@@ -12,6 +12,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/346/346167.png">
@@ -41,7 +42,13 @@
             margin-top: 180px;
         }
 
-       
+        p {
+            line-height: 1.75;
+        }
+
+        .page-section {
+            padding: 3rem 0;
+        }
     </style>
 </head>
 
@@ -58,16 +65,116 @@
 <!-- Fin Imagen principal-->
 
 <br />
-<h4 class="card-header text-center" style="background-color: #DFF8DC"> Información del proyecto </h4>
+<h4 class="card-header text-center" style="background-color: #DFF8DC"> Acerca del proyecto </h4>
 <br />
-<p>En la sección usuario puede accederse a todas las funciones básicas de la página (CRUD), para ingresar a mi mundo</p>
-<p>esto se tiene que iniciar sesión con unas credenciales específicas pero no lo he hecho solo la persona que cuente con usuario y contraseña puede hacer esto</p>
-<p> y en la parte de resultados van unos gráficos que tengo que hacer</p>
 
+<div class="container-fluid">
+    <h5>
+        BIODIVERSIDAD DE MICROORGANISMOS FIJADORES DE NITRÓGENO COMO BASE PARA EL
+        DESARROLLO DE NUEVOS BIOFERTILIZANTES PARA LA AGRICULTURA Y LA REFORESTACIÓN
+    </h5>
+    <p>
+        Gran parte del éxito de las plantas leguminosas en los diferentes ecosistemas de tropicales podría
+        deberse a su capacidad de establecer relaciones simbióticas con microorganismos fijadores de
+        nitrógeno. En este proyecto evaluamos la presencia de nódulos formados por bacterias fijadoras
+        en plantas tropicales (110 especies, 70 géneros, 4 subfamilias de Fabaceae). La cantidad de
+        géneros evaluados representa aproximadamente el 53% de los géneros de leguminosas
+        reportados para Costa Rica y cerca del 9.5% de los géneros de leguminosas a nivel mundial.
+        Muchas de las especies y géneros de plantas se estudian por primera vez en cuanto a sus
+        relaciones simbióticas. Se incluyen particularmente 18 especies de árboles que se encuentran
+        amenazadas o en peligro de extinción. Algunas de las preguntas a responder incluyen:
+    </p>
+
+    <ul>
+        <li>
+            ¿Cuáles especies de plantas nodulan y cuáles no?
+        </li>
+        <li>¿Qué géneros de bacterias están formando los nódulos?,</li>
+        <li>¿Existe algún patrón simple para predecir si una planta nodula?,</li>
+        <li> ¿Cuál es la diversidad de fijadores de nitrógeno? </li>
+        <li> ¿Son las relaciones entre las bacterias y las plantas hospederas específicas o  generalistas? </li>
+        <li> ¿Son las relaciones entre las bacterias y las plantas hospederas específicas o  generalistas? </li>
+        <li>¿Cómo pueda usarse la información obtenida para desarrollar biofertilizantes para plantas leguminosas tropicales?</li>
+    </ul>
+</div> <br />
+
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h3 class="section-subheading text-muted">Los resultados de este proyecto han permitido:</h3>
+        </div> <br />
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <img src="~/Images/unosinfondo.png" alt="two" height="80" style="margin-bottom:15px"> <br />
+
+                <p class="text-muted">
+                    Caracterizar la
+                    biodiversidad de microorganismos fijadores de nitrógeno y las interacciones con sus hospederos
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <img src="~/Images/dossinfondo.png" alt="two" height="80" style="margin-bottom:15px"> <br />
+                <p class="text-muted">
+                    Describir nuevas especies de bacterias y establecer una colección de microorganismos fijadores
+                    única en la región
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <img src="~/Images/tressinfondo.png" alt="two" height="80" style="margin-bottom:15px"> <br />
+                <p class="text-muted">
+                    Obtener microorganismos seleccionados para el desarrollo de nuevos
+                    biofertilizantes para especies agrícolas y forestales
+                </p>
+            </div>
+        </div>
+    </div>
+</section> <br />
+
+<!-- Team-->
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">PERSONAS INVESTIGADORAS Y COLABORADORAS EN PROYECTO</h2>
+        </div> <br />
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
+                    <h4>Dr. Keilor Rojas Jiménez</h4>
+                    <p class="text-muted"></p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
+                    <h4>MBA. Jessica Morera Huertas</h4>
+                    <p class="text-muted"></p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+                    <h4>Dra. Laura Solís</h4>
+                    <p class="text-muted"></p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+</section>
 
 <!-- Galería-->
-<br />
-<br />
 <br />
 <div class="card text-center">
     <h2 class="card-header text-light font-weight-bold" style="background-color: #6dc067;"> Subfamilias de plantas </h2>

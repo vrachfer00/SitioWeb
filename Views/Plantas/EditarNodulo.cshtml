@@ -1,8 +1,202 @@
-﻿
+﻿@model SitioWeb.Models.PlantasNodulan
+
 @{
     ViewData["Title"] = "EditarNodulo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>EditarNodulo</h1>
+<div class="card">
+    <h5 class="card-header">Editar hospedero</h5>
 
+    <div class="card-body col-md-9 col-sm-12">
+
+        <div class="mb-3">
+            <label class="form-label">ID de Planta</label>
+            <input asp-for="IDPlanta" disabled="disabled" type="text" class="form-control" id="txtIDPlanta">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ID de nódulo</label>
+            <input asp-for="IdNodulo" disabled="disabled" type="text" class="form-control" id="txtIDNodulo">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Individuo</label>
+            <input asp-for="Indiv" disabled="disabled" type="text" class="form-control" id="txtIndiv">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre científico del hospedero</label>
+            <input asp-for="NombreCientificoPlanta" disabled="disabled" type="text" class="form-control" id="txtNomCienPlan">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Cantidad de nodos</label>
+            <input asp-for="CantidadNodos" type="text" class="form-control" id="txtCantidad">
+            <span asp-validation-for="CantidadNodos" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Forma del nodo</label>
+            <input asp-for="FormaNodo" type="text" class="form-control" id="txtForma">
+            <span asp-validation-for="FormaNodo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo de nodo</label>
+            <input asp-for="TipoNodo" type="text" class="form-control" id="txtTipo">
+            <span asp-validation-for="TipoNodo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tamaño de nodo</label>
+            <input asp-for="TamanoNodo" type="text" class="form-control" id="txtTamano">
+            <span asp-validation-for="TamanoNodo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fecha</label>
+            <input asp-for="Fecha" type="text" class="form-control" id="txtFecha">
+            <span asp-validation-for="Fecha" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Proyecto</label>
+            <input asp-for="Proyecto" type="text" class="form-control" id="txtProyecto">
+            <span asp-validation-for="Proyecto" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Permiso</label>
+            <input asp-for="Permiso" type="text" class="form-control" id="txtPermiso">
+            <span asp-validation-for="Permiso" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Filo de bacteria</label>
+            <input asp-for="FiloBacteria" type="text" class="form-control" id="txtFilo">
+            <span asp-validation-for="FiloBacteria" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Género de bacteria</label>
+            <input asp-for="GeneroBacteria" type="text" class="form-control" id="txtGenero">
+            <span asp-validation-for="GeneroBacteria" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">¿Es rizobio?</label>
+            <select class="form-control" aria-label=".form-select-lg example" asp-for="Rhizobio" id="txtRhizobio" required>
+                <option disabled selected hidden>Seleccione</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Prueba Gram</label>
+            <select class="form-control" aria-label=".form-select-lg example" asp-for="Gram" id="txtGram" required>
+                <option disabled selected hidden>Seleccione</option>
+                <option value="Positiva">Positiva</option>
+                <option value="Negativa">Negativa</option>
+                <option value="No Aplica">No Aplica</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Secuencia</label>
+            <input asp-for="Secuencia" type="text" class="form-control" id="txtSecuencia">
+            <span asp-validation-for="Secuencia" class="text-danger"></span>
+        </div>
+
+        <!--Imagen-->
+        <div class="col-sm-6">
+            <label class="form-label">Seleccione una foto de la planta: </label>
+            @if (Model != null && !String.IsNullOrEmpty(Model.FotoNodulo))
+            {
+                <img src="@Html.DisplayFor(model => model.TipoFoto), @Html.DisplayFor(model => model.FotoNodulo)" class="form-control-file" id="img" height="240" width="240" style="border:1px">
+            }
+            else
+            {
+                <div class="col text-center">
+                    <img src="https://denac-public.s3.amazonaws.com/assets/img/catalog/thumbnails/accesorios/iluminacion/cuartos/nissan/00418081r.png" class="form-control-file" id="img" width="240" height="240">
+                </div>
+            }
+            <div id="chooseFile">
+                <br />
+                <input type="file" id="fupload" accept="image/*">
+            </div>
+        </div><br />
+        <!--Imagen-->
+    </div>
+
+    <div class="botones text-center">
+        <a href="javascript:history.back()" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-return-left"></i> Regresar </a>
+        <button type="submit" class="btn btn-dark btn-sm" id="update"> <i class="bi bi-save-fill"></i> Actualizar</button>
+    </div> <br />
+
+    <!--Script de la vista previa-->
+    <script type="text/javascript">
+
+        var images
+        function ReadImages(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img').attr('src', e.target.result);
+                    images = e.target.result //4000 characters
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#fupload').change(function () {
+            ReadImages(this);
+        })
+
+               //Script del botón actualizar
+                $('#update').click(function () {
+                    var obj = {}
+                    obj.ID = $('#txtIDPlanta').val();
+                    obj.NombreCientifico = $('#txtIDNodulo').val();
+                    obj.GeneroHosp = $('#txtIndiv').val();
+                    obj.NombreComun = $('#txtNomCienPlan').val();
+                    obj.Subfamilia = $('#txtCantidad').val();
+                    obj.TipoHojas = $('#txtForma').val();
+                    obj.MorfoHojas = $('#txtTipo').val();
+                    obj.PosHojas = $('#txtTamano').val();
+                    obj.PosFoliolos = $('#txtFecha').val();
+                    obj.ColorFlor = $('#txtProyecto').val();
+                    obj.TipoFlor = $('#txtPermiso').val();
+                    obj.Petalos = $('#txtFilo').val();
+                    obj.Espinas = $('#txtGenero').val();
+                    obj.Amenazado = $('#txtRhizobio').val();
+                    obj.ColorRaiz = $('#txtGram').val();
+                    obj.Simbionte = $('#txtSecuencia').val();
+
+                    var img = images.split(","); //Separa el string por el valor del parámetro
+                    obj.tipoImagen = img[0];
+                    obj.Imagen = img[1]
+
+                    $.ajax({
+                        url: '@Url.Action("EditarNodulo", "Plantas")',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: { objs: obj },
+                        success: function (data) {
+                            alert(data);
+                        },
+
+                        error: function (request, status, error) {
+
+                            var val = request.responseText;
+                            window.location.href = 'https://localhost:5001/Plantas/Listar'
+                        }
+
+                    })
+                })
+    </script>
+
+</div>

@@ -364,8 +364,8 @@ namespace SitioWeb.Datos
 
 
 
-        //Procedimiento que permite obtener info de una planta específica según el ID, incluye la foto de la planta
-        public PlantasNodulan ObtenerNodoConFoto(string IdNodo)
+        //Procedimiento que permite obtener info de un nodo específica según el IdNodo, incluye la foto del nodo
+        public PlantasNodulan ObtenerNodoConFoto(string IdNodulo)
         {
             var oContacto = new PlantasNodulan();
 
@@ -375,7 +375,7 @@ namespace SitioWeb.Datos
             {
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("ObtenerNodo", conexion);
-                cmd.Parameters.AddWithValue("IdNodo", IdNodo); //Enviar parámetro
+                cmd.Parameters.AddWithValue("IdNodulo", IdNodulo); //Enviar parámetro
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var dr = cmd.ExecuteReader())
@@ -462,7 +462,7 @@ namespace SitioWeb.Datos
         }
 
 
-        //Procedimiento para editar info de una planta CON FOTO NO SIRVE y siempre retorna falso
+        //Procedimiento para editar info de una planta CON FOTO 
         public bool EditarConFoto(PlantasTotalModel ocontacto)
         {
             bool rpta;
@@ -513,6 +513,55 @@ namespace SitioWeb.Datos
 
         }
 
+        //Procedimiento para editar info de un nodo CON FOTO 
+        public bool EditarNodoConFoto(PlantasNodulan ocontacto)
+        {
+            bool rpta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("EditarNodo", conexion);
+                    cmd.Parameters.AddWithValue("IdNodulo", ocontacto.IdNodulo);
+                    cmd.Parameters.AddWithValue("Indiv", ocontacto.Indiv); //Enviar parámetro
+                    cmd.Parameters.AddWithValue("NombreCientificoPlanta", ocontacto.NombreCientificoPlanta);
+                    cmd.Parameters.AddWithValue("CantidadNodos", ocontacto.CantidadNodos);
+                    cmd.Parameters.AddWithValue("FormaNodo", ocontacto.FormaNodo);
+                    cmd.Parameters.AddWithValue("TipoNodo", ocontacto.TipoNodo);
+                    cmd.Parameters.AddWithValue("TamanoNodo", ocontacto.TamanoNodo);
+                    cmd.Parameters.AddWithValue("Fecha", ocontacto.Fecha);
+                    cmd.Parameters.AddWithValue("Proyecto", ocontacto.Proyecto);
+                    cmd.Parameters.AddWithValue("Permiso", ocontacto.Permiso);
+                    cmd.Parameters.AddWithValue("FiloBacteria", ocontacto.FiloBacteria);
+                    cmd.Parameters.AddWithValue("GeneroBacteria", ocontacto.GeneroBacteria);
+                    cmd.Parameters.AddWithValue("Rhizobio", ocontacto.Rhizobio);
+                    cmd.Parameters.AddWithValue("Gram", ocontacto.Gram);
+                    cmd.Parameters.AddWithValue("Secuencia", ocontacto.Secuencia);
+                    cmd.Parameters.AddWithValue("IDPlanta", ocontacto.IDPlanta);
+
+                    cmd.Parameters.AddWithValue("TipoFoto", ocontacto.TipoFoto);
+                    byte[] img = Convert.FromBase64String(ocontacto.FotoNodulo);
+                    cmd.Parameters.AddWithValue("FotoNodulo", img);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+
+            }
+            catch (Exception e) //No devuelve ningún mensaje de error
+            {
+                string error = e.Message;
+                rpta = false;
+            }
+
+            return rpta;
+        }
+
         //Procedimiento para eliminar info de una planta
         public bool Eliminar(int ID) //Eliminar todos los registros de nódulos que tenga la planta y luego eliminar la planta para que funcione
         {
@@ -527,6 +576,35 @@ namespace SitioWeb.Datos
                     conexion.Open();
                     SqlCommand cmd = new SqlCommand("Eliminar", conexion);
                     cmd.Parameters.AddWithValue("ID", ID); //Enviar parámetro
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+                rpta = false;
+            }
+
+            return rpta;
+        }
+
+        //Procedimiento para eliminar info de una planta
+        public bool EliminarNodulo(string IdNodulo) //Eliminar todos los registros de nódulos que tenga la planta y luego eliminar la planta para que funcione
+        {
+            bool rpta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("EliminarNodo", conexion);
+                    cmd.Parameters.AddWithValue("IdNodulo", IdNodulo); //Enviar parámetro
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }

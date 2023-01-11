@@ -10,8 +10,7 @@
 <div class="card">
     <h5 class="card-header text-center"> Lista de nodos de @ViewData["NombrePlanta"] </h5>
     <div class="card-body">
-        <a asp-action="Guardar" asp-controller="Plantas" class="btn btn-dark btn-sm"> <i class="bi bi-plus-circle"></i> Nuevo individuo</a>
-        <br /> <br />
+        <br /> 
 
         <table class="table table-striped table-bordered table-sm">
             <thead>
@@ -31,9 +30,9 @@
                         <td class="text-center"> @item.FiloBacteria </td>
                         <td class="text-center" style="font-style:italic">@item.GeneroBacteria</td>
                         <td class="text-center">
-                            <a asp-action="Editar" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.IdNodulo"> <i class="bi bi-pencil-square"></i> Editar</a>
-                            <a asp-action="DetallesNodulo" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-ID="@item.IdNodulo"> <i class="bi bi-eye-fill"></i> Detalles</a>
-                            <a asp-action="Eliminar" asp-controller="Plantas" class="btn btn-danger btn-sm" asp-route-ID="@item.IdNodulo"> <i class="bi bi-trash"></i> Eliminar</a>
+                            <a asp-action="EditarNodulo" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-IdNodulo="@item.IdNodulo"> <i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-action="DetallesNodulo" asp-controller="Plantas" class="btn btn-light btn-sm" asp-route-IdNodulo="@item.IdNodulo"> <i class="bi bi-eye-fill"></i> Detalles</a>
+                            <a asp-action="EliminarNodulo" asp-controller="Plantas" class="btn btn-danger btn-sm" asp-route-IdNodulo="@item.IdNodulo"> <i class="bi bi-trash"></i> Eliminar</a>
                         </td>
 
                     </tr>
